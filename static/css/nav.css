@@ -3,6 +3,10 @@
     margin: 0;
     padding: 0;
 }
+/* custom scroll bar */
+::-webkit-scrollbar {width: 0px !important;}
+::-webkit-scrollbar-track {background: #242526;}
+::-webkit-scrollbar-thumb {background: #3A3B3C;}
 a {color: grey}
 /* The side navigation menu */
 .sidenav {
@@ -16,7 +20,8 @@ a {color: grey}
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px; /* Place content 60px from the top */
     transition: 0.5s;
-    box-shadow: 0 4px 8px 0 rgba(160, 159, 159, 0.2), 0 6px 20px 0 rgba(156, 156, 156, 0.19);
+    padding-right: 20px;
+    /*box-shadow: 0 4px 8px 0 rgba(160, 159, 159, 0.2), 0 6px 20px 0 rgba(156, 156, 156, 0.19);*/
   }
    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
    main {
@@ -59,13 +64,17 @@ a {color: grey}
   
   /* The navigation menu links */
   .sidenav a {
-    padding: 12px 10px 12px 32px;
+    padding: 10px 10px 10px 32px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     display: block;
     transition: 0.3s;
     margin-bottom: 20px;
-
+    margin-right: 20px;
+    color: gray;
+    margin-left: 20px;
+    border-radius: 5px;
+    cursor: pointer;
   }
   .sidenav h3 {
     color: white;
@@ -74,7 +83,8 @@ a {color: grey}
     font-size: 27px;
   }
   .sidenav a:hover, .sidenav a.active {
-    color: blue;
+    background: rgba(0, 140, 255, 0.1);
+    color: #000;
   }
   .sidenav ul {
     padding-left: 20px;
@@ -86,8 +96,8 @@ a {color: grey}
     margin: 0;
   }
   .sidenav ul li a {
-    font-size: 15px;
-    padding: 8px 8px 8px 32px;
+    font-size: 13px;
+    padding: 5px 5px 5px 32px;
   }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -131,13 +141,43 @@ header {
   transition: max-height 0.2s ease-out;
 }
 .accordion:after {
-  content: '\002B';
-  color: #777;
-  font-weight: bold;
+  content: '\2304';
   float: right;
   margin-left: 5px;
 }
 
 .accordion.active:after {
-  content: "\2212";
+  content: "\2303";
+}
+/* dashboard */
+.dash-menu {
+  margin-top: 20px;
+}
+.dash-menu-con {
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(8, 176, 243, 0.1);
+}
+
+.table {
+  border: 1px solid rgba(8, 176, 243, 0.1);
+ 
+  margin-top: 30px;
+}
+.table thead {
+  background: rgba(0, 140, 255, 0.1);
+}
+.table tr {border:none}
+.dash-table tr th:nth-child(1) {
+  min-width: 270px !important;
+}
+.dash-table tr th:nth-child(2) {
+  min-width: 150px !important;
+}
+.dash-table tr th:nth-child(3) {
+  min-width: 150px !important;
+}
+.dash-table tr th:nth-child(3) {
+  min-width: 200px !important;
 }

@@ -2,50 +2,126 @@
 <html>
 <head>
   <!-- template -->
+  <!-- navigation bar -->
   <template id="sidenav">
     <div id="mySidenav" class="sidenav">
       <h3 class="w-bold-x">KosmosHR</h3>
       <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
       <a href="#" class="active"><i class="fa fa-th-large"></i> Dashboard</a>
-      <a href="#employees"><i class="fa fa-user"></i> Profile</a>
+      <a href="#profile"><i class="fa fa-user"></i> Profile</a>
       <a href="#employees"><i class="fa fa-users"></i> Employees</a>
-      <a href="#" class="accordion"><i class="fa fa-building"></i> Manage Staff</a>
+      <a class="accordion"><i class="fa fa-building"></i> Organization</a>
+      <ul class="panel">
+        <li><a href="#company_profile"><i class="fa fa-building"></i> Company Profile</a></li>
+        <li><a href="#departments"><i class="fa fa-bank"></i> Departments</a></li>
+        <li><a href="#positions"><i class="fa fa-graduation-cap"></i> Positions</a></li>
+        <li><a href="#events"><i class="fa fa-calendar"></i> Events</a></li>
+      </ul>
+      <a class="accordion"><i class="fa fa-male"></i> Manage Staff</a>
       <ul class="panel">
         <li><a href="#tasks"><i class="fa fa-list"></i> Tasks</a></li>
         <li><a href="#queries"><i class="fa fa-pencil"></i> Queries</a></li>
         <li><a href="#complaints"><i class="fa fa-file-o"></i> Complaints</a></li>
         <li><a href="#leave"><i class="fa fa-briefcase"></i> Leave</a></li>
-        <li><a href="#reward"><i class="fa fa-trophy"></i> Reward/Ranking</a></li>
+        <li><a href="#reward"><i class="fa fa-trophy"></i> Ranking</a></li>
       </ul>
-      <a href="#" class="accordion"><i class="fa fa-exchange"></i> Communication</a>
+      <a class="accordion"><i class="fa fa-exchange"></i> Communication</a>
       <ul class="panel">
-        <li><a href="#news"><i class="fa fa-newspaper"></i> News/Updates</a></li>
+        <li><a href="#news"><i class="fa fa-newspaper-o"></i> News/Updates</a></li>
         <li><a href="#logs"><i class="fa fa-pencil"></i> Logs/Activities</a></li>
       </ul>
-      <a href="#settings"><i class="fa fa-gear"></i> Settings</a>
+      <a class="accordion"><i class="fa fa-gear"></i> Settings</a>
+      <ul class="panel">
+        <li><a href="#subscription"><i class="fa fa-refresh"></i> Subscription</a></li>
+        <li><a href="#settings"><i class="fa fa-gears"></i> General Settings</a></li>
+      </ul>
       <a href="#" class="w-text-red"><i class="fa fa-power-off"></i> Logout</a>
     </div>
-    
-    
   </template>
+
+  <!-- header -->
+  <template id="header">
+    <header>
+      <div class="w-margin-right">
+        <input type="text" placeholder="Search" class="form-control" id="search">
+      </div>
+      <div class="side-content">
+        <a href="#notification" class="notification w-margin-right"><i class="fa fa-bell-o"></i> </a>
+        <div class="side-content admin-pro w-margin-right">
+          <img src="./static/image/avatar.png" alt="" class="admin-img" />
+          <div class="h5">HR Admin</div>
+        </div>
+        <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
+      </div>
+    </header>
+  </template>
+
   <!-- for large screen navigation -->
   <template id="dashboard">
         <?use-template: "sidenav"?>
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
-          <header>
-            <div class="form-group w-margin-right">
-              <input type="text" placeholder="Search" class="form-control" id="search">
+          <?use-template: "header"?>
+          <h3>Welcome Back</h3>
+          <p class="w-text-gray">Use the navigation bar for quick access to all our features</p>
+          <div class="dash-menu row">
+            <div class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
+              <div class="h5 w-bold-x">Employees</div>
+              <h3><i class="fa fa-male w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x">20</span></h3>
             </div>
-            <div class="side-content">
-              <a href="#notification" class="notification w-margin-right"><i class="fa fa-bell-o"></i> </a>
-              <div class="side-content admin-pro w-margin-right">
-                <img src="./static/image/avatar.png" alt="" class="admin-img" />
-                <div class="h5">HR Admin</div>
-              </div>
-              <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
+            <div class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
+              <div class="h5 w-bold-x">Departments</div>
+              <h3><i class="fa fa-bank w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x">6</span></h3>
             </div>
-          </header>
+            <div class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
+              <div class="h5 w-bold-x">Pending Queries</div>
+              <h3><i class="fa fa-pencil w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x">2</span></h3>
+            </div>
+          </div>
+          <!-- Tables -->
+          <div class="table-responsive">
+            <table class="dash-table table">
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Staff</th>
+                  <th>Deadline</th>
+                  <th>Contact</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Conduct outreach to potential customers via phone, email and social media</td>
+                  <td>Olorunfemi Ayobami</td>
+                  <td>22nd October, 2023</td>
+                  <td>07011223344</td>
+                  <td><a href="#">Details</a></td>
+                </tr>
+                <tr>
+                  <td>Conduct outreach to potential customers via phone, email and social media</td>
+                  <td>Olorunfemi Ayobami</td>
+                  <td>22nd October, 2023</td>
+                  <td>07011223344</td>
+                  <td><a href="#">Details</a></td>
+                </tr>
+                <tr>
+                  <td>Conduct outreach to potential customers via phone, email and social media</td>
+                  <td>Olorunfemi Ayobami</td>
+                  <td>22nd October, 2023</td>
+                  <td>07011223344</td>
+                  <td><a href="#">Details</a></td>
+                </tr>
+                <tr>
+                  <td>Conduct outreach to potential customers via phone, email and social media</td>
+                  <td>Olorunfemi Ayobami</td>
+                  <td>22nd October, 2023</td>
+                  <td>07011223344</td>
+                  <td><a href="#">Details</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </main>
   </template>
 
