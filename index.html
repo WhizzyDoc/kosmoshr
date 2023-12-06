@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- template -->
+  <template id="sidenav">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
+      <a href="/">Home</a>
+      <a href="#employees">Employees</a>
+      <a href="#">Manage Staff</a>
+      <a href="#settings">Settings</a>
+    </div>
+    
+    
+  </template>
+  <!-- for large screen navigation -->
+  <template id="dashboard">
+        <?use-template: "sidenav"?>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <main class="">
+          <header>
+            <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
+            <div class="form-group w-margin-right">
+              <input type="text" placeholder="Search" class="form-control" id="search">
+            </div>
+            <div class="side-content">
+              <a href="#notification" class="notification w-margin-right"><i class="fa fa-bell-o"></i> </a>
+              <div class="side-content admin-pro">
+                <img src="./static/image/avatar.png" alt="" class="admin-img" />
+                <h5>HR Admin</h5>
+              </div>
+            </div>
+          </header>
+        </main>
+  </template>
+
+  <template id="404">
+    <?include: "templates/_parts/404.html"?><?end?>
+</template>
+
+<!-- Routes -->
+<!-- homepage -->
+<template route="/">
+  <?use-template: "dashboard"?>
+</template>
+
+
+<!-- Standard Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Site Properties -->
+<title>KosmosHR - Admin</title>
+<link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./static/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="./static/css/rigan.css">
+<link rel="stylesheet" type="text/css" href="./static/themes/w-theme-blue.css">
+<link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+<link rel="stylesheet" type="text/css" href="./static/css/nav.css">
+<script src="./static/module/swif.js"></script>
+<script src="./dist/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./dist/semantic.min.js"></script>                                                                                         
+
+<script>
+var on = XJSX.event.on,
+emit = XJSX.event.emit;
+emit("hashchange");
+</script>
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+  
+<?on: "hashchange"?>
+
+<?eval:
+"var hash=location.hash
+hash=hash.replace(/^\/?#\/?|^/img,'/')
+var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
+
+<?use-template: page?>
+<?end?>
+
+<script src="./static/js/functions.js"></script>
+</body>
+</html>                                                                                                                                               

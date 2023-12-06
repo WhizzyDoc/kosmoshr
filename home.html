@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- template -->
+  <!-- homepage -->
+  <template id="home">
+      <?include: "templates/home/home.html"?><?end?>
+  </template>
+
+  <!-- signup -->
+  <template id="signup">
+      <?include: "templates/home/signup.html"?><?end?>
+  </template>
+
+  <!-- login -->
+  <template id="login">
+    <div class="pusher">
+      <?include: "templates/home/login.html"?><?end?>
+  </template>
+  <!-- login -->
+  <template id="404">
+      <?include: "templates/_parts/404.html"?><?end?>
+  </template>
+
+
+<!-- Routes -->
+<!-- homepage -->
+<template route="/">
+  <?use-template: "home"?>
+</template>
+<!-- signup page -->
+<template route="/signup">
+  <?use-template: "signup"?>
+</template>
+<!-- signup page -->
+<template route="/login">
+  <?use-template: "login"?>
+</template>
+
+<!-- Standard Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Site Properties -->
+<title>KosmosHR</title>
+
+<link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+<script src="./static/module/swif.js"></script>
+<script src="./dist/jquery.min.js"></script>
+<script src="./dist/components/visibility.min.js"></script>
+<script src="./dist/components/sidebar.min.js"></script>
+<script src="./dist/components/transition.min.js"></script>
+
+<script>
+var on = XJSX.event.on,
+emit = XJSX.event.emit;
+emit("hashchange");
+</script>
+
+<style type="text/css">
+
+
+</style>
+</head>
+<body>
+  
+<?on: "hashchange"?>
+
+<?eval:
+"var hash=location.hash
+hash=hash.replace(/^\/?#\/?|^/img,'/')
+var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
+
+<?use-template: page?>
+<?end?>
+
+</body>
+
+
+</html>
