@@ -16,7 +16,7 @@ a {color: grey}
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px; /* Place content 60px from the top */
     transition: 0.5s;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(160, 159, 159, 0.2), 0 6px 20px 0 rgba(156, 156, 156, 0.19);
   }
    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
    main {
@@ -59,13 +59,36 @@ a {color: grey}
   
   /* The navigation menu links */
   .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 12px 10px 12px 32px;
     text-decoration: none;
     font-size: 18px;
     display: block;
     transition: 0.3s;
+    margin-bottom: 20px;
+
   }
-  
+  .sidenav h3 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    padding: 8px 10px 8px 35px;
+    font-size: 27px;
+  }
+  .sidenav a:hover, .sidenav a.active {
+    color: blue;
+  }
+  .sidenav ul {
+    padding-left: 20px;
+    margin: 0;
+    list-style-type: none;
+  }
+  .sidenav ul li {
+    padding: 0;
+    margin: 0;
+  }
+  .sidenav ul li a {
+    font-size: 15px;
+    padding: 8px 8px 8px 32px;
+  }
   
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
@@ -98,4 +121,23 @@ header {
 }
 @media screen and (max-width:500px) {
     .admin-pro {display:none;}
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion.active:after {
+  content: "\2212";
 }

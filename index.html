@@ -4,11 +4,26 @@
   <!-- template -->
   <template id="sidenav">
     <div id="mySidenav" class="sidenav">
+      <h3 class="w-bold-x">KosmosHR</h3>
       <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
-      <a href="/">Home</a>
-      <a href="#employees">Employees</a>
-      <a href="#">Manage Staff</a>
-      <a href="#settings">Settings</a>
+      <a href="#" class="active"><i class="fa fa-th-large"></i> Dashboard</a>
+      <a href="#employees"><i class="fa fa-user"></i> Profile</a>
+      <a href="#employees"><i class="fa fa-users"></i> Employees</a>
+      <a href="#" class="accordion"><i class="fa fa-building"></i> Manage Staff</a>
+      <ul class="panel">
+        <li><a href="#tasks"><i class="fa fa-list"></i> Tasks</a></li>
+        <li><a href="#queries"><i class="fa fa-pencil"></i> Queries</a></li>
+        <li><a href="#complaints"><i class="fa fa-file-o"></i> Complaints</a></li>
+        <li><a href="#leave"><i class="fa fa-briefcase"></i> Leave</a></li>
+        <li><a href="#reward"><i class="fa fa-trophy"></i> Reward/Ranking</a></li>
+      </ul>
+      <a href="#" class="accordion"><i class="fa fa-exchange"></i> Communication</a>
+      <ul class="panel">
+        <li><a href="#news"><i class="fa fa-newspaper"></i> News/Updates</a></li>
+        <li><a href="#logs"><i class="fa fa-pencil"></i> Logs/Activities</a></li>
+      </ul>
+      <a href="#settings"><i class="fa fa-gear"></i> Settings</a>
+      <a href="#" class="w-text-red"><i class="fa fa-power-off"></i> Logout</a>
     </div>
     
     
@@ -19,16 +34,16 @@
         <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
         <main class="">
           <header>
-            <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
             <div class="form-group w-margin-right">
               <input type="text" placeholder="Search" class="form-control" id="search">
             </div>
             <div class="side-content">
               <a href="#notification" class="notification w-margin-right"><i class="fa fa-bell-o"></i> </a>
-              <div class="side-content admin-pro">
+              <div class="side-content admin-pro w-margin-right">
                 <img src="./static/image/avatar.png" alt="" class="admin-img" />
-                <h5>HR Admin</h5>
+                <div class="h5">HR Admin</div>
               </div>
+              <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
             </div>
           </header>
         </main>
@@ -43,7 +58,6 @@
 <template route="/">
   <?use-template: "dashboard"?>
 </template>
-
 
 <!-- Standard Meta -->
 <meta charset="utf-8" />
