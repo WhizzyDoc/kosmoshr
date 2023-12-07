@@ -22,27 +22,96 @@
   <template id="login">
     
     <div class="row">
+        <!-- carousel -->
         <div class="col-12 col-sm-12 col-md-6 col-lg-7 col-xl-7">
-            <div>
-                <img src="./static/image/landing.jpg" style="width:100%;height:auto;max-height:100vh" alt="" />
+            <div id="demo-car" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators">
+                  <li data-target="#demo" data-slide-to="0" class="active"></li>
+                  <li data-target="#demo" data-slide-to="1"></li>
+                  <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="./static/image/landing2.jpg" alt="Los Angeles">
+                    <div class="carousel-caption">
+                      <h3>Los Angeles</h3>
+                      <p>We had such a great time in LA!</p>
+                    </div>   
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./static/image/landing1.png" alt="Chicago">
+                    <div class="carousel-caption">
+                      <h3>Chicago</h3>
+                      <p>Thank you, Chicago!</p>
+                    </div>   
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./static/image/landing4.png" alt="New York">
+                    <div class="carousel-caption">
+                      <h3>New York</h3>
+                      <p>We love the Big Apple!</p>
+                    </div>   
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#demo-car" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo-car" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
             </div>
         </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
-            <form class="login-form admin-login-form">
-                <h3 class="w-bold-xx">Sign into Company Account</h3>
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" id="admin-username" placeholder="Your Username" required>
+        <div class="login-form col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+            <h3 class="w-bold-xxx">Sign into Company Account</h3>
+
+            <ul class="nav nav-tabs" style="border:none;">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#home">As An Admin</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#menu1">As A Staff</a>
+                </li>
+            </ul>
+              
+              <!-- Tab panes -->
+              <div class="tab-content" style="border:none;">
+                <div class="tab-pane active container" style="border:none;" id="home">
+                    <form class="admin-login-form">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" id="admin-username" placeholder="Your Username" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="admin-password" placeholder="Your Password" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
+                              </div>
+                        </div>
+                        <p class="mt-2 w-text-red" id="admin_err"></p>
+                        <a href="#admin_forgot_password" class="w-block mb-2 mt-2 w-text-right">Forgot Password?</a>
+                        <button type="submit" class="login-btn btn btn-block btn-primary">Log In</button>
+                        <p class="mt-2">Not A Member? <a href="#register">Create Account</a></p>
+                    </form>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" id="admin-password" placeholder="Your Password" required>
-                    <div class="input-group-append">
-                        <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
-                      </div>
+                <div class="tab-pane container" id="menu1">
+                    <form class="staff-login-form">
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" id="staff-username" placeholder="Staff ID" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="staff-password" placeholder="Password" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
+                              </div>
+                        </div>
+                        <p class="mt-2 w-text-red" id="staff_err"></p>
+                        <a href="#staff_forgot_password" class="w-block mb-2 mt-2 w-text-right">Forgot Password?</a>
+                        <button type="submit" class="login-btn btn btn-block btn-primary">Log In</button>
+                        <p class="mt-2">Not A Member?</p>
+                    </form>
                 </div>
-                <a href="#forgot_password" class="w-block mb-2 mt-2 w-text-right">Forgot Password?</a>
-                <button type="submit" id="" class="login-btn btn btn-block btn-primary">Log In</button>
-                <p class="mt-2">Not A Member? <a href="#register">Create Account</a></p>
-            </form>
+              </div>
+
+            
         </div>
     </div>
   </template>
@@ -63,8 +132,8 @@
             if(localStorage.account == 'admin') {
                 location.href = './admin.html';
             }
-            else if(localStorage.account == 'employee') {
-                location.href = './employee.html';
+            else if(localStorage.account == 'staff') {
+                location.href = './staff.html';
             }
         }
     </script>
@@ -84,6 +153,10 @@ var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
         $('.admin-login-form').submit(function(e) {
             e.preventDefault();
             authenticate();
+        })
+        $('.staff-login-form').submit(function(e) {
+            e.preventDefault();
+            staffLogin();
         })
     </script>
 </body>

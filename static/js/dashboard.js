@@ -1,5 +1,5 @@
-function getRecentTasks() {
-    let url = `${base_url}tasks/get_tasks/?per_page=5`;
+function getRecentLogs() {
+    let url = `${base_url}logs/get_logs/?per_page=10`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -9,12 +9,10 @@ function getRecentTasks() {
         if(data.data) {
             let t = data.data;
             for(var i in t) {
-                let deadline = new Date(t[i].deadline).toLocaleString();
+                let date = new Date(t[i].date).toLocaleString();
                 let temp = `<tr>
-                <td>${t[i].description}</td>
-                <td>${t[i].assigned_to.first_name} ${t[i].assigned_to.last_name}</td>
-                <td>${deadline}</td>
-                <td>${t[i].assigned_to.email}</td>
+                <td><b>${t[i].user.first_name} ${t[i].user.last_name}</b> ${t[i].action}</td>
+                <td>${date}</td>
                 <td><a href="#" class="task-det" data-id="${t[i].id}">Details</a></td>
               </tr>`;
               $('.dash-task').append(temp)
@@ -22,14 +20,14 @@ function getRecentTasks() {
         }
         else {
             let temp = `<tr>
-            <td colspan="5">No recent tasks.</td>
+            <td colspan="3">No recent activities.</td>
             </tr>`;
             $('.dash-task').append(temp)
         }
       }
       else if(data['status'] == 'error') {
         let temp = `<tr>
-            <td colspan="5">${data['message']}</td>
+            <td colspan="3">${data['message']}</td>
             </tr>`;
             $('.dash-task').append(temp)
       }
@@ -86,4 +84,4 @@ function getRecentTasks() {
 getTotalDept()
 getTotalEmp()
 getPendQue()
-getRecentTasks()
+getRecentLogs()

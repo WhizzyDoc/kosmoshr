@@ -14,6 +14,8 @@
       <a class="accordion"><i class="fa fa-building"></i> Organization</a>
       <ul class="panel">
         <li><a href="#company_profile"><i class="fa fa-building"></i> Company Profile</a></li>
+        <li><a href="#budgets"><i class="fa fa-bar-chart"></i> Budgets</a></li>
+        <li><a href="#budgets"><i class="fa fa-money"></i> Manage Revenue</a></li>
         <li><a href="#departments"><i class="fa fa-bank"></i> Departments</a></li>
         <li><a href="#positions"><i class="fa fa-graduation-cap"></i> Positions</a></li>
         <li><a href="#events"><i class="fa fa-calendar"></i> Events</a></li>
@@ -33,7 +35,7 @@
       </ul>
       <a class="accordion"><i class="fa fa-gear"></i> Settings</a>
       <ul class="panel">
-        <li><a href="#subscription"><i class="fa fa-refresh"></i> Subscription</a></li>
+        <li><a href="#subscription"><i class="fa fa-dollar"></i> Subscription</a></li>
         <li><a href="#settings"><i class="fa fa-gears"></i> General Settings</a></li>
       </ul>
       <a href="#" class="w-text-red logout-btn"><i class="fa fa-power-off"></i> Logout</a>
@@ -98,42 +100,40 @@
                 </div>
               </div>
 
-              <div class="row mt-4 mb-5">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 xol-xl-6">
-                  <div class="box shadow">
-                    <div id="radialBarBottom"></div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 xol-xl-6">
-                  <div class="box shadow">
-                    <div id="bubbleChart"></div>
-                  </div>
-                </div>
-              </div>
-
               <div class="row sparkboxes mt-4">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                   <div class="box box1">
                     <div id="spark1"></div>
                   </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 xol-xl-6">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                   <div class="box box2">
                     <div id="spark2"></div>
                   </div>
                 </div>
               </div>
-              <div class="row sparkboxes mt-3">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 xol-xl-6">
-                  <div class="box box3">
-                    <div id="spark3"></div>
+
+              <div class="row mt-4 mb-5">
+                <div class="w-margin-top col-12 col-sm-12 col-md-12 col-lg-12 xol-xl-6">
+                  <div class="box body-bg">
+                    <div
+                      id="area-adwords"
+                      style="background: #fff"
+                      class="shadow"
+                    ></div>
                   </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 xol-xl-6">
-                  <div class="box box4">
-                    <div id="spark4"></div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-6">
+                  <div class="box shadow">
+                    <div id="radialBarBottom"></div>
                   </div>
                 </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-6">
+                  <div class="box shadow">
+                    <div id="radialBarBottom2"></div>
+                  </div>
+                </div>
+                
               </div>
 
             </div>
@@ -159,26 +159,30 @@
             <table class="dash-table table">
               <thead style="background:#fff">
                 <tr>
-                  <th colspan="5" class="w-bold-x">Recent Tasks</th>
+                  <th colspan="5" class="w-bold-x">Recent Activities</th>
                 </tr>
               </thead>
               <thead>
                 <tr>
-                  <th>Task</th>
-                  <th>Staff</th>
-                  <th>Deadline</th>
-                  <th>Email</th>
+                  <th>Activity Log</th>
+                  <th>Date</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody class="dash-task">
-                
+                <tr>
+                  <td colspan="3" class="w-center">
+                  <div class="loader">
+                      <div class="ball w-black"></div>
+                      <div class="ball w-black"></div>
+                      <div class="ball w-black"></div>
+                  </div>
+                  </td>
+              </tr>
               </tbody>
             </table>
           </div>
         </main>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script src="./static/js/dashboard.js"></script>
         <script src="./static/js/chart.js"></script>
   </template>
@@ -209,7 +213,9 @@
 <script src="./static/module/swif.js"></script>
 <script src="./dist/jquery.min.js"></script>
 <script src="./static/js/bootstrap.min.js"></script>
-<script src="./dist/semantic.min.js"></script>                                                                                         
+<script src="./dist/semantic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>                                                                                         
 
 <script>
 var on = XJSX.event.on,

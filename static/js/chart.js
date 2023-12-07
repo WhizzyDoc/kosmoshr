@@ -35,7 +35,7 @@ window.Apex = {
       }
     },
     title: {
-      text: '439',
+      text: 'Sales',
       style: {
         fontSize: '26px'
       }
@@ -73,7 +73,7 @@ window.Apex = {
       }
     },
     title: {
-      text: '387',
+      text: 'Production',
       style: {
         fontSize: '26px'
       }
@@ -112,7 +112,7 @@ window.Apex = {
     },
     colors: ['#f4516c'],
     title: {
-      text: '577',
+      text: 'Expenditure',
       style: {
         fontSize: '26px'
       }
@@ -155,7 +155,7 @@ window.Apex = {
     },
     colors: ['#00c5dc'],
     title: {
-      text: '615',
+      text: 'Revenue',
       style: {
         fontSize: '26px'
       }
@@ -191,15 +191,15 @@ window.Apex = {
     },
     colors: ["#00C5A4", '#F3F2FC'],
     series: [{
-      name: "Attended",
+      name: "Upvote",
       data: [20, 16, 24, 28, 26, 22, 15, 5, 14, 16, 22, 29],
     }, {
-      name: "Absent",
+      name: "Downvote",
       data: [20, 16, 24, 28, 26, 22, 15, 5, 14, 16, 22, 29],
     }],
-    labels: ["Week 1", "Week 2", "Week 3","Week 4", "Week 5", 
-            "Week 6", "Week 7","Week 8", "Week 9", "Week 10", 
-            "Week 11","Week 12",],
+    labels: ["January", "February", "March", "April", "May", 
+            "June", "July","August", "September", "October", 
+            "November","December",],
     xaxis: {
       axisBorder: {
         show: true
@@ -244,11 +244,11 @@ window.Apex = {
       offsetY: -36
     },
     title: {
-      text: 'Course Attendace',
+      text: 'Monthly Company Ratings',
       align: 'left',
     },
     subtitle: {
-      text: 'Attendnce'
+      text: 'Votes'
     },
     tooltip: {
       shared: true,
@@ -282,7 +282,7 @@ window.Apex = {
         }
       }
     },
-    series: [65],
+    series: [70],
     theme: {
       monochrome: {
         enabled: false
@@ -292,7 +292,7 @@ window.Apex = {
       show: false
     },
     title: {
-      text: 'Course Completed',
+      text: 'Tasks Assigned',
       align: 'left'
     }
   }
@@ -320,10 +320,10 @@ window.Apex = {
     },
     colors: ['#775DD0', '#00C8E1', '#FFB900', '#E91E63'],
     title: {
-      text: 'Skills'
+      text: 'Company Budget'
     },
-    series: [2, 7, 5, 4],
-    labels: ['Speed', 'Accuracy', 'Commitment', 'Quiz'],
+    series: [15, 40, 20, 25],
+    labels: ['Advertisement', 'Production', 'Salary', 'Reserve'],
     legend: {
       show: false
     }
@@ -359,12 +359,12 @@ window.Apex = {
     },
     colors: ["#3F51B5", '#2196F3'],
     series: [{
-        name: "Assignments",
+        name: "Revenue",
         data: [15, 26, 20, 33, 27, 43, 17, 26, 19]
       },
       {
-        name: "Projects",
-        data: [33, 21, 42, 19, 32, 25, 36, 29, 49]
+        name: "Expenditure",
+        data: [19, 21, 42, 19, 32, 25, 36, 29, 49]
       }
     ],
     fill: {
@@ -379,13 +379,13 @@ window.Apex = {
       }
     },
     title: {
-      text: 'Course Progress',
+      text: 'Profit Analysis',
       align: 'left',
       offsetY: -5,
       offsetX: 20
     },
     subtitle: {
-      text: 'Progress Statistics',
+      text: 'Monthly Statistics',
       offsetY: 30,
       offsetX: 20
     },
@@ -456,6 +456,40 @@ window.Apex = {
   
   var chartCircle4 = new ApexCharts(document.querySelector('#radialBarBottom'), optionsCircle4);
   chartCircle4.render();
+
+  var optionsCircle5 = {
+    chart: {
+      height: 314,
+      type: 'radialBar',
+    },
+    colors: ['#775DD0', '#00C8E1', '#FFB900'],
+    labels: ['q4'],
+    series: [71, 63, 77],
+    labels: ['June', 'May', 'April'],
+    theme: {
+      monochrome: {
+        enabled: false
+      }
+    },
+    plotOptions: {
+      radialBar: {
+        offsetY: -30
+      }
+    },
+    legend: {
+      show: true,
+      position: 'left',
+      containerMargin: {
+        right: 0
+      }
+    },
+    title: {
+      text: 'Growth'
+    }
+  }
+  
+  var chartCircle5 = new ApexCharts(document.querySelector('#radialBarBottom2'), optionsCircle4);
+  chartCircle5.render();
   
   function generateData(baseval, count, yrange) {
     var i = 0;
