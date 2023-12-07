@@ -1,9 +1,12 @@
+const base_url = `http://127.0.0.1:8000/api/v1/`
+
 $(document).ready(function() {
     
 })
 
 /* Navigation bar */
 /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+//localStorage.removeItem('api_key')
 function openNav() {
     $(".sidenav").toggleClass('active');
     $("main").toggleClass('active');
@@ -22,3 +25,28 @@ for (i = 0; i < acc.length; i++) {
     } 
   });
 }
+
+function getSite() {
+  let url = `${base_url}site/get_site_info/?api_token=${localStorage.api_key}`;
+  fetch(url)
+  .then(res => {return res.json()})
+  .then(data => {
+    //console.log(data);
+    if(data['status'] == 'success') {
+      if(data.data) {
+        $('.site-title').html(data.data.title)
+        $('title').html(data.data.title)
+      }
+      else {
+        $('.site-title').html('Kosmos')
+        $('title').html('Kosmos')
+      }
+    }
+    else if(data['status'] == 'error') {
+      $('.site-title').html('Kosmos')
+      $('title').html('Kosmos')
+    }
+  })
+  .catch(err => {console.log(err)})
+}
+getSite()

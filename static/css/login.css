@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* custom scroll bar */
+::-webkit-scrollbar {width: 0px !important;}
+::-webkit-scrollbar-track {background: #242526;}
+::-webkit-scrollbar-thumb {background: #3A3B3C;}
+a {color: grey}
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px;
+    height: 100%;
+}
+form input {
+    padding: 30px 20px !important;
+    border-radius: 20px;
+}
+form button {
+    padding: 15px !important;
+    border-radius: 20px;
+}

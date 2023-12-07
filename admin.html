@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- template -->
+  
+  <!-- navigation bar -->
+  <template id="sidenav">
+    <div id="mySidenav" class="sidenav">
+      <h3 class="w-bold-x site-title"></h3>
+      <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
+      <a href="#" class="active"><i class="fa fa-th-large"></i> Dashboard</a>
+      <a href="#profile"><i class="fa fa-user"></i> Profile</a>
+      <a href="#employees"><i class="fa fa-users"></i> Employees</a>
+      <a class="accordion"><i class="fa fa-building"></i> Organization</a>
+      <ul class="panel">
+        <li><a href="#company_profile"><i class="fa fa-building"></i> Company Profile</a></li>
+        <li><a href="#departments"><i class="fa fa-bank"></i> Departments</a></li>
+        <li><a href="#positions"><i class="fa fa-graduation-cap"></i> Positions</a></li>
+        <li><a href="#events"><i class="fa fa-calendar"></i> Events</a></li>
+      </ul>
+      <a class="accordion"><i class="fa fa-male"></i> Manage Staff</a>
+      <ul class="panel">
+        <li><a href="#tasks"><i class="fa fa-list"></i> Tasks</a></li>
+        <li><a href="#queries"><i class="fa fa-pencil"></i> Queries</a></li>
+        <li><a href="#complaints"><i class="fa fa-file-o"></i> Complaints</a></li>
+        <li><a href="#leave"><i class="fa fa-briefcase"></i> Leave</a></li>
+        <li><a href="#reward"><i class="fa fa-trophy"></i> Ranking</a></li>
+      </ul>
+      <a class="accordion"><i class="fa fa-exchange"></i> Communication</a>
+      <ul class="panel">
+        <li><a href="#news"><i class="fa fa-newspaper-o"></i> News/Updates</a></li>
+        <li><a href="#logs"><i class="fa fa-pencil"></i> Logs/Activities</a></li>
+      </ul>
+      <a class="accordion"><i class="fa fa-gear"></i> Settings</a>
+      <ul class="panel">
+        <li><a href="#subscription"><i class="fa fa-refresh"></i> Subscription</a></li>
+        <li><a href="#settings"><i class="fa fa-gears"></i> General Settings</a></li>
+      </ul>
+      <a href="#" class="w-text-red logout-btn"><i class="fa fa-power-off"></i> Logout</a>
+    </div>
+    <script>
+      $('.logout-btn').click(function(e) {
+        e.preventDefault();
+        localStorage.removeItem('api_key')
+        localStorage.removeItem('account')
+        localStorage.removeItem('names');
+        location.href = './index.html'
+      })
+    </script>
+  </template>
+
+  <!-- header -->
+  <template id="header">
+    <header>
+      <form class="w-margin-right" id="search-form">
+        <input type="text" placeholder="Search anything" class="form-control" id="search">
+      </form>
+      <div class="side-content">
+        <a href="#notification" class="notification w-margin-right"><i class="fa fa-bell-o"></i> </a>
+        <div class="side-content admin-pro w-margin-right">
+          <img src="./static/image/avatar.png" alt="" class="admin-img" />
+          <div class="h5"><?print: localStorage.names?></div>
+        </div>
+        <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
+      </div>
+    </header>
+    
+  </template>
+
+  <!-- for large screen navigation -->
+  <template id="dashboard">
+    
+        <?use-template: "sidenav"?>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <main class="">
+          <?use-template: "header"?>
+          <h3>Welcome Back</h3>
+          <p class="w-text-gray">Use the navigation bar for quick access to all our features</p>
+          
+          <div id="dash-wrapper">
+            <div class="content-area">
+
+              <div class="row mt-4">
+                <div class="w-margin-bottom col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
+                  <div class="box shadow">
+                    <div id="bar"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-4">
+                  <div class="box shadow">
+                    <div id="donutTop"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+                  <div class="box shadow">
+                    <div id="radialBar1"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mt-4 mb-5">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-12 xol-xl-6">
+                  <div class="box shadow">
+                    <div id="radialBarBottom"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-12 xol-xl-6">
+                  <div class="box shadow">
+                    <div id="bubbleChart"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row sparkboxes mt-4">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                  <div class="box box1">
+                    <div id="spark1"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 xol-xl-6">
+                  <div class="box box2">
+                    <div id="spark2"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row sparkboxes mt-3">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 xol-xl-6">
+                  <div class="box box3">
+                    <div id="spark3"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 xol-xl-6">
+                  <div class="box box4">
+                    <div id="spark4"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+  
+  
+          <div class="dash-menu row">
+            <div class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
+              <div class="h5 w-bold-x">Employees</div>
+              <h3><i class="fa fa-male w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x emp_no">0</span></h3>
+            </div>
+            <div class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
+              <div class="h5 w-bold-x">Departments</div>
+              <h3><i class="fa fa-bank w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x dept_no">0</span></h3>
+            </div>
+            <div class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
+              <div class="h5 w-bold-x">Pending Queries</div>
+              <h3><i class="fa fa-pencil w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x query_no">0</span></h3>
+            </div>
+          </div>
+          <!-- Tables -->
+          <div class="table-responsive">
+            <table class="dash-table table">
+              <thead style="background:#fff">
+                <tr>
+                  <th colspan="5" class="w-bold-x">Recent Tasks</th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Staff</th>
+                  <th>Deadline</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="dash-task">
+                
+              </tbody>
+            </table>
+          </div>
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="./static/js/dashboard.js"></script>
+        <script src="./static/js/chart.js"></script>
+  </template>
+
+  <template id="404">
+    <?include: "templates/_parts/404.html"?><?end?>
+</template>
+
+<!-- Routes -->
+<!-- homepage -->
+<template route="/">
+  <?use-template: "dashboard"?>
+</template>
+
+<!-- Standard Meta -->
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- Site Properties -->
+<title></title>
+<link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./static/css/fontawesome.css">
+<link rel="stylesheet" type="text/css" href="./static/css/rigan.css">
+<link rel="stylesheet" type="text/css" href="./static/themes/w-theme-blue.css">
+<link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+<link rel="stylesheet" type="text/css" href="./static/css/nav.css">
+<script src="./static/module/swif.js"></script>
+<script src="./dist/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./dist/semantic.min.js"></script>                                                                                         
+
+<script>
+var on = XJSX.event.on,
+emit = XJSX.event.emit;
+emit("hashchange");
+</script>
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+  <script>
+    if(!localStorage.api_key || !localStorage.account || !localStorage.names) {
+      location.href = './index.html';
+    }
+</script>
+  
+<?on: "hashchange"?>
+
+<?eval:
+"var hash=location.hash
+hash=hash.replace(/^\/?#\/?|^/img,'/')
+var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
+
+<?use-template: page?>
+<?end?>
+
+<script src="./static/js/functions.js"></script>
+</body>
+</html>                                                                                                                                               
