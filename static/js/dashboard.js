@@ -13,7 +13,7 @@ function getRecentLogs() {
                 let temp = `<tr>
                 <td><b>${t[i].user.first_name} ${t[i].user.last_name}</b> ${t[i].action}</td>
                 <td>${date}</td>
-                <td><a href="#" class="task-det" data-id="${t[i].id}">Details</a></td>
+                <td><a href="#" class="log-del" data-id="${t[i].id}">Delete</a></td>
               </tr>`;
               $('.dash-task').append(temp)
             }
