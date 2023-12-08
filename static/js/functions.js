@@ -11,20 +11,6 @@ function openNav() {
     $(".sidenav").toggleClass('active');
     $("main").toggleClass('active');
   }
-  var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
-  });
-}
 
 function getSite() {
   let url = `${base_url}site/get_site_info/?api_token=${localStorage.api_key}`;
@@ -36,10 +22,19 @@ function getSite() {
       if(data.data) {
         $('.site-title').html(data.data.title)
         $('title').html(data.data.title)
+        $('#comp-name').val(data.data.title)
+        $('#comp-email').val(data.data.email)
+        $('#comp-address').val(data.data.address)
+        $('#comp-type').val(data.data.type)
+        $('#comp-number').val(data.data.phone_number)
+        $('#comp-emp').val(data.data.no_of_employees)
+        $('#comp-about').val(data.data.about)
+        $('.alert-note').css('display', 'none')
       }
       else {
         $('.site-title').html('Kosmos')
         $('title').html('Kosmos')
+        $('.alert-note').css('display', 'block')
       }
     }
     else if(data['status'] == 'error') {

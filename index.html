@@ -8,20 +8,20 @@
     <link rel="stylesheet" type="text/css" href="./static/css/rigan.css">
     <link rel="stylesheet" type="text/css" href="./static/themes/w-theme-blue.css">
     <link rel="stylesheet" type="text/css" href="./dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/sweetalert.min.css">
     <link rel="stylesheet" type="text/css" href="./static/css/login.css">
     <script src="./static/module/swif.js"></script>
     <script src="./dist/jquery.min.js"></script>
     <script src="./static/js/bootstrap.min.js"></script>
+    <script src="./static/js/sweetalert.min.js"></script>
     <script src="./dist/semantic.min.js"></script> 
     <title></title>
     <!-- Templates -->
     <template id="404">
         <?include: "templates/_parts/404.html"?><?end?>
     </template>
-    <!-- login -->
-  <template id="login">
-    
-    <div class="row">
+
+    <template id="carousel-page">
         <!-- carousel -->
         <div class="col-12 col-sm-12 col-md-6 col-lg-7 col-xl-7">
             <div id="demo-car" class="carousel slide" data-ride="carousel">
@@ -61,6 +61,11 @@
                 </a>
             </div>
         </div>
+    </template>
+    <!-- login -->
+  <template id="login">
+    <div class="row">
+        <?use-template: "carousel-page"?>
         <div class="login-form col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
             <h3 class="w-bold-xxx">Sign into Company Account</h3>
 
@@ -82,7 +87,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <input type="password" class="form-control" id="admin-password" placeholder="Your Password" required>
-                            <div class="input-group-append">
+                            <div class="input-group-append view-pass">
                                 <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
                               </div>
                         </div>
@@ -99,7 +104,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <input type="password" class="form-control" id="staff-password" placeholder="Password" required>
-                            <div class="input-group-append">
+                            <div class="input-group-append view-pass">
                                 <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
                               </div>
                         </div>
@@ -114,11 +119,104 @@
             
         </div>
     </div>
+    <script>
+        $('.view-pass').click(function() {
+            var input = $(this).siblings('input');
+            if(input.attr('type') == 'password') {
+                input.attr('type', 'text');
+                $(this).children('span').html(`<i class="fa fa-eye-slash"></i>`)
+            }
+            else {
+                input.attr('type', 'password')
+                $(this).children('span').html(`<i class="fa fa-eye"></i>`)
+            }
+        })
+    </script>
+  </template>
+
+  <!-- login -->
+  <template id="register">
+    <div class="row">
+        <?use-template: "carousel-page"?>
+        <div class="login-form col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5">
+            <h3 class="w-bold-xxx">Sign Up For Free</h3>
+
+            <ul class="nav nav-tabs" style="border:none;display:none;">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#si">As An Admin</a>
+                </li>
+            </ul>
+              
+              <!-- Tab panes -->
+              <div class="tab-content" style="border:none;">
+                <div class="tab-pane active container" style="border:none;" id="si">
+                    <form class="register-form">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="f-name" placeholder="First Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="l-name" placeholder="Last Name" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="text" class="form-control" id="reg-username" placeholder="Username" required>
+                          <p class="mt-2 w-text-red" id="user_err"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="reg-pass" placeholder="Password" required>
+                            <div class="input-group-append view-pass">
+                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
+                            </div>
+                            <p class="mt-2 w-text-red" id="pass_err"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" required>
+                            <div class="input-group-append view-pass">
+                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
+                            </div>
+                            
+                        </div>
+                        <p class="mt-2 w-text-red" id="cpass_err"></p>
+                        <p class="mt-2 w-text-red" id="register_err"></p>
+                        <button type="submit" class="register-btn btn btn-block btn-primary">Create Account</button>
+                        <p class="mt-2">Already A Member? <a href="#">Log In</a></p>
+                    </form>
+                </div>
+              </div>
+
+            
+        </div>
+    </div>
+    <script>
+        $('.view-pass').click(function() {
+            var input = $(this).siblings('input');
+            if(input.attr('type') == 'password') {
+                input.attr('type', 'text')
+                $(this).children('span').html(`<i class="fa fa-eye-slash"></i>`)
+            }
+            else {
+                input.attr('type', 'password')
+                $(this).children('span').html(`<i class="fa fa-eye"></i>`)
+            }
+        });
+        $('.register-form').submit(function(e) {
+            e.preventDefault();
+            register();
+        })
+    </script>
   </template>
     <!-- Routes -->
 <!-- homepage -->
 <template route="/">
     <?use-template: "login"?>
+  </template>
+  <template route="/register">
+    <?use-template: "register"?>
   </template>
     <script>
         var on = XJSX.event.on,
@@ -158,6 +256,8 @@ var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
             e.preventDefault();
             staffLogin();
         })
+        
+        
     </script>
 </body>
 </html>
