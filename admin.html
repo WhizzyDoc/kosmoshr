@@ -33,9 +33,9 @@
         <li><a href="#news"><i class="fa fa-newspaper-o"></i> News/Updates</a></li>
         <li><a href="#logs"><i class="fa fa-pencil"></i> Logs/Activities</a></li>
       </ul>
-      <a class="accordion"><i class="fa fa-gear"></i> Settings</a>
+      <a class="accordion set-act"><i class="fa fa-gear"></i> Settings</a>
       <ul class="panel">
-        <li><a href="#subscription"><i class="fa fa-dollar"></i> Subscription</a></li>
+        <li><a class="sub-act" href="#subscription"><i class="fa fa-dollar"></i> Subscription</a></li>
         <li><a href="#settings"><i class="fa fa-gears"></i> General Settings</a></li>
         <li><a href="#security"><i class="fa fa-lock"></i> Security Settings</a></li>
         <li><a href="#staff_settings"><i class="fa fa-group"></i> Staff Settings</a></li>
@@ -83,6 +83,129 @@ for (i = 0; i < acc.length; i++) {
       </div>
     </header>
     
+  </template>
+
+  <!-- for subscription -->
+  <template id="subscription">
+    <?use-template: "sidenav"?>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <main class="">
+          <?use-template: "header"?>
+          <div class="alert-note alert alert-danger">
+            <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
+          </div>
+          <h3>Subscription</h3>
+          <p class="w-text-gray">Choose a subscription plan that best suits your need.</p>
+
+          <div class="sub-container">
+            <div class="sub-progress-bar">
+
+              <div class="step">
+                <div class="bullet">
+                  <span></span>
+                </div>
+                <div class="check fa fa-check"></div>
+                <p><i class="fa fa-dollar"></i></p>
+              </div>
+
+              <div class="step">
+                <div class="bullet">
+                  <span></span>
+                </div>
+                <div class="check fa fa-check"></div>
+                <p><i class="fa fa-credit-card"></i></p>
+              </div>
+              <div class="step">
+                <div class="bullet">
+                  <span></span>
+                </div>
+                <div class="check fa fa-check"></div>
+                <p><i class="fa fa-file-o"></i></p>
+              </div>
+              <div class="step">
+                <div class="bullet">
+                  <span></span>
+                </div>
+                <div class="check fa fa-check"></div>
+                <p><i class="fa fa-thumbs-up"></i></p>
+              </div>
+            </div>
+            <div class="form-outer">
+              <div class="sub-step">
+
+                <div class="page slide-page">
+
+                  <div class="wrapper">
+                    <input type="radio" name="slider" checked id="home">
+                    <input type="radio" name="slider" id="blog">
+                    <input type="radio" name="slider" id="code">
+                    <input type="radio" name="slider" id="help">
+                    <div class="tabs">
+                      <label for="home" class="home">Free</label>
+                      <label for="blog" class="blog">Standard</label>
+                      <label for="code" class="code">Corporate</label>
+                      <label for="help" class="help">Business</label>
+                      <div class="slider"></div>
+                    </div>
+                    <section>
+
+                      <div class="content content-1">
+                        <p class="h6 w-center">Freemium plan for beginner's</p><br>
+                        <p class="h6 w-bold-x">Features</p>
+                        <div class="field">
+                          <button class="firstNext prev">Pay Monthly</button>
+                          <button class="firstNext2 next">Pay Yearly</button>
+                        </div>
+                      </div>
+
+                      <div class="content content-2">
+                        
+                      </div>
+
+                      <div class="content content-3">
+                        
+                      </div>
+
+                      <div class="content content-4">
+                        
+                      </div>
+
+                    </section>
+                  </div>
+                
+                </div>
+      
+                <div class="page">
+                  <div class="field btns">
+                    <button class="prev-1 prev">Previous</button>
+                    <button class="next-1 next">Next</button>
+                  </div>
+                </div>
+      
+                <div class="page">
+                  <div class="field btns">
+                    <button class="prev-2 prev">Previous</button>
+                    <button class="next-2 next">Next</button>
+                  </div>
+                </div>
+      
+                <div class="page">
+                  <div class="field btns">
+                    <button class="prev-3 prev">Previous</button>
+                    <button class="submit">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+        <script src="./static/js/settings.js"></script>
+    <script>
+      $('.sub-act').addClass('active');
+      $('.set-act').addClass('active');
+      getPlans();
+    </script>
   </template>
 
   <!-- for company profile -->
@@ -279,6 +402,9 @@ for (i = 0; i < acc.length; i++) {
 </template>
 <template route="/company_profile">
   <?use-template: "company_profile"?>
+</template>
+<template route="/subscription">
+  <?use-template: "subscription"?>
 </template>
 
 <!-- Standard Meta -->

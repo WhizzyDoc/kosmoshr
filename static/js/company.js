@@ -1,3 +1,4 @@
+getSite();
 function saveCompanyInfo() {
     let url = `${base_url}site/create_site_info/`;
     let title = $('#comp-name').val()
