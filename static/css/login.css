@@ -11,8 +11,11 @@
 a {color: red}
 .login-form {
     width: 100%;
+    max-width: 450px;
     margin: auto;
     padding: 30px;
+    background: #fff;
+
 }
 .login-form h3 {
     padding-left: 30px;
@@ -76,7 +79,11 @@ form button {
     padding: 20px;
     text-align: center;
   }
-
+@media screen and (max-width:500px) {
+    .carop {
+        display: none;
+    }
+}
 
 
   .wrapper {
