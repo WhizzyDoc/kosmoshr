@@ -224,9 +224,6 @@ header {
 .dash-table tr th:nth-child(3) {
   min-width: 150px !important;
 }
-.dash-table tr th:nth-child(3) {
-  min-width: 200px !important;
-}
 .content-area {
   width: 100%;
   margin: 0 auto;
@@ -552,4 +549,52 @@ text-align: justify;
 .feat-list li {
   font-size: 12px;
   line-height: 2;
+}
+
+/* Employees Page */
+.emp-table tr th:nth-child(1) {
+  min-width: 250px;
+  max-width: 100%;
+}
+.emp-table tr th:nth-child(2) {
+  min-width: 70px !important;
+}
+.emp-table tr th:nth-child(3) {
+  min-width: 90px !important;
+}
+.emp-table tr th:nth-child(4) {
+  min-width: 90px !important;
+}
+.emp-table tr th:nth-child(5) {
+  min-width: 150px !important;
+}
+.emp-table tr th:nth-child(6) {
+  min-width: 90px !important;
+}
+@media screen and (max-width:500px) {
+  .emp-table tr th:nth-child(2) {display:none}
+  .emp-table tr td:nth-child(2) {display:none}
+  .emp-table tr th:nth-child(4) {display:none}
+  .emp-table tr td:nth-child(4) {display:none}
+  .emp-table tr th:nth-child(5) {display:none}
+  .emp-table tr td:nth-child(5) {display:none}
+}
+@media screen and (max-width:400px) {
+  .emp-table tr th:nth-child(3) {display:none}
+  .emp-table tr td:nth-child(3) {display:none}
+}
+.emp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add_emp_btn {
+  border: none;
+  padding: 15px 20px;
+  background: #a0b5f0;
+  color: blue;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-right: 20px;
 }

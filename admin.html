@@ -10,7 +10,7 @@
       <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
       <a href="#" class="dash-act"><i class="fa fa-th-large"></i> Dashboard</a>
       <a href="#profile"><i class="fa fa-user"></i> Profile</a>
-      <a href="#employees"><i class="fa fa-users"></i> Employees</a>
+      <a href="#employees" class="emp-act"><i class="fa fa-users"></i> Employees</a>
       <a class="accordion org-act"><i class="fa fa-building"></i> Organization</a>
       <ul class="panel">
         <li><a class="comp-act" href="#company_profile"><i class="fa fa-building"></i> Company Profile</a></li>
@@ -63,7 +63,7 @@ for (i = 0; i < acc.length; i++) {
     } 
   });
 }
-getSite();
+getSite();  
     </script>
   </template>
 
@@ -71,7 +71,12 @@ getSite();
   <template id="header">
     <header>
       <form class="w-margin-right" id="search-form">
-        <input type="text" placeholder="Search anything" class="form-control" id="search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search Anything" id="search">
+          <div class="input-group-append">
+            <span class="input-group-text" style="background:none;"><i class="fa fa-search"></i></span>
+          </div>
+        </div>
       </form>
       <div class="side-content">
         <a href="#notification" class="notification w-margin-right"><i class="fa fa-bell-o"></i> </a>
@@ -413,6 +418,78 @@ getSite();
         </script>
   </template>
 
+  <!-- Employees Page -->
+  <template id="employees">
+    <?use-template: "sidenav"?>
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <main class="">
+      <?use-template: "header"?>
+      <div class="alert-note alert alert-danger">
+        <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
+      </div>
+      <div class="w-flex w-flex-wrap w-flex-between w-align-center">
+        <div class="mb-2">
+          <h3>Employees</h3>
+          <p class="w-text-gray">Get Insight into full list of employees registered with the company</p>
+        </div>
+
+        <button class="add_emp_btn">Add Employee&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+      </div>
+
+      <!-- Tables -->
+      <div class="table-responsive">
+        <table class="emp-table table">
+          <thead style="background:#fff">
+            <tr>
+              <th>
+                <form>
+                <div class="input-group" style="margin:0">
+                  <input type="text" class="form-control" placeholder="Search Employee" id="emp_search" value="" />
+                  <div class="input-group-append">
+                    <span class="input-group-text" style="background:none;"><i class="fa fa-search"></i></span>
+                  </div>
+                </div>
+                <input type="hidden" id="emp_page" value="1" />
+                </form>
+              </th>
+              <th style="width:100%!important" class="w-bold-x emp-head">
+                <div><b class="emp-no"></b>&nbsp;Employees</div>
+              </th>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th>Names</th>
+              <th>Staff ID</th>
+              <th>Department</th>
+              <th>Position</th>
+              <th>Phone Number</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="emp-list">
+            <tr>
+              <td colspan="6" class="w-center">
+              <div class="loader">
+                  <div class="ball w-black"></div>
+                  <div class="ball w-black"></div>
+                  <div class="ball w-black"></div>
+              </div>
+              </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </main>
+    <script src="./static/js/employees.js"></script>
+    <script>
+      $('.emp-act').addClass('active')
+      
+    </script>
+  </template>
+
+  <!-- error 404 page -->
   <template id="404">
     <?include: "templates/_parts/404.html"?><?end?>
 </template>
@@ -427,6 +504,9 @@ getSite();
 </template>
 <template route="/subscription">
   <?use-template: "subscription"?>
+</template>
+<template route="/employees">
+  <?use-template: "employees"?>
 </template>
 
 <!-- Standard Meta -->

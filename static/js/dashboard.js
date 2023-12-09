@@ -35,7 +35,7 @@ function getRecentLogs() {
     .catch(err => {console.log(err)})
   }
   function getTotalDept() {
-    let url = `${base_url}departments/get_departments/`;
+    let url = `${base_url}departments/get_departments/?api_token=${localStorage.api_key}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -50,7 +50,7 @@ function getRecentLogs() {
     .catch(err => {console.log(err)})
   }
   function getTotalEmp() {
-    let url = `${base_url}employees/get_employees/`;
+    let url = `${base_url}employees/get_employees/?api_token=${localStorage.api_key}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
@@ -65,7 +65,7 @@ function getRecentLogs() {
     .catch(err => {console.log(err)})
   }
   function getPendQue() {
-    let url = `${base_url}queries/get_queries/?addressed=false`;
+    let url = `${base_url}queries/get_queries/?api_token=${localStorage.api_key}&addressed=false`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
