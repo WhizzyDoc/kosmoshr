@@ -344,7 +344,7 @@ textarea {resize:none;}
   border-radius: 30px;
   color: #fff;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 30px;
   font-size: 12px;
   font-weight: 400;
   margin-left: 5px;
@@ -483,6 +483,7 @@ textarea {resize:none;}
 @media screen and (max-width: 400px) {
   .wrapper .tabs label {
     font-size: 12px;
+    text-align: center;
   }
 }
 .wrapper .tabs label:hover{
@@ -525,6 +526,7 @@ section .content{
   display: none;
   background: #fff;
   padding-top: 30px;
+  text-align: left;
 }
 #home:checked ~ section .content-1,
 #blog:checked ~ section .content-2,
@@ -540,4 +542,14 @@ section .content .title{
 }
 section .content p{
 text-align: justify;
+}
+.feat-list {
+  text-align:left;
+  list-style-type: none;
+  padding: 10px;
+  padding-left: 20px;
+}
+.feat-list li {
+  font-size: 12px;
+  line-height: 2;
 }

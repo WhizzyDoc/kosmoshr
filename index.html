@@ -81,38 +81,62 @@
               <!-- Tab panes -->
               <div class="tab-content" style="border:none;">
                 <div class="tab-pane active container" style="border:none;" id="home">
-                    <form class="admin-login-form">
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" id="admin-username" placeholder="Your Username" required>
+                    <div class="wrapper">
+                      <form class="admin-login-form" action="#">
+                        <h2>Login</h2>
+                          <div class="input-field">
+                          <input type="text" id="admin-username" required>
+                          <label>Enter Your Username</label>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" id="admin-password" placeholder="Your Password" required>
-                            <div class="input-group-append view-pass">
-                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
-                              </div>
+                        <div class="input-field">
+                          <input type="password" id="admin-password" required>
+                          
+                          <label>Enter your password</label>
                         </div>
-                        <p class="mt-2 w-text-red" id="admin_err"></p>
-                        <a href="#admin_forgot_password" class="w-block mb-2 mt-2 w-text-right">Forgot Password?</a>
-                        <button type="submit" class="login-btn btn btn-block btn-primary">Log In</button>
-                        <p class="mt-2">Not A Member? <a href="#register">Create Account</a></p>
-                    </form>
+                        <p class="mt-2 w-text-yellow" id="admin_err"></p>
+                        <div class="forget">
+                          <label for="remember">
+                            <input type="checkbox" id="remember">
+                            <p>Remember me</p>
+                          </label>
+                          <a href="#admin_forgot_password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="login-btn">Log In</button>
+                        <div class="register">
+                          <p>Don't have an account? <a href="#register">Create Account</a></p>
+                        </div>
+                      </form>
+                    </div>
                 </div>
                 <div class="tab-pane container" id="menu1">
-                    <form class="staff-login-form">
-                        <div class="input-group mb-3">
-                          <input type="text" class="form-control" id="staff-username" placeholder="Staff ID" required>
+
+                    <div class="wrapper">
+                      <form class="staff-login-form" action="#">
+                        <h2>Login</h2>
+                          <div class="input-field">
+                          <input type="text" id="staff-username" required>
+                          <label>Enter Your Staff ID</label>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" id="staff-password" placeholder="Password" required>
-                            <div class="input-group-append view-pass">
-                                <span class="input-group-text w-padding"><i class="fa fa-eye"></i></span>
-                              </div>
+                        <div class="input-field">
+                          <input type="password" id="staff-password" required>
+                          
+                          <label>Enter your password</label>
                         </div>
-                        <p class="mt-2 w-text-red" id="staff_err"></p>
-                        <a href="#staff_forgot_password" class="w-block mb-2 mt-2 w-text-right">Forgot Password?</a>
-                        <button type="submit" class="login-btn btn btn-block btn-primary">Log In</button>
-                        <p class="mt-2">Not A Member?</p>
-                    </form>
+                        <p class="mt-2 w-text-yellow" id="staff_err"></p>
+                        <div class="forget">
+                          <label for="remember">
+                            <input type="checkbox" id="remember">
+                            <p>Remember me</p>
+                          </label>
+                          <a href="#staff_forgot_password">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="login-btn">Log In</button>
+                        <div class="register">
+                          <p>Don't have an account?</p>
+                        </div>
+                      </form>
+                    </div>
+
                 </div>
               </div>
 
