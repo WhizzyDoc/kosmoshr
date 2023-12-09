@@ -42,13 +42,12 @@
       </ul>
       <a href="#" class="w-text-red logout-btn"><i class="fa fa-power-off"></i> Logout</a>
     </div>
+    <script src="./static/js/login.js"></script>
     <script>
+      
       $('.logout-btn').click(function(e) {
         e.preventDefault();
-        localStorage.removeItem('api_key')
-        localStorage.removeItem('account')
-        localStorage.removeItem('names');
-        location.href = './index.html'
+        admin_logout();
       })
       var acc = document.getElementsByClassName("accordion");
 var i;
@@ -64,6 +63,7 @@ for (i = 0; i < acc.length; i++) {
     } 
   });
 }
+getSite();
     </script>
   </template>
 

@@ -61,6 +61,7 @@
                 </a>
             </div>
         </div>
+
     </template>
     <!-- login -->
   <template id="login">
@@ -155,6 +156,16 @@
                 $(this).children('span').html(`<i class="fa fa-eye"></i>`)
             }
         })
+        $('.staff-login-form').submit(function(e) {
+            e.preventDefault();
+            staffLogin();
+        })
+        
+        $('.admin-login-form').submit(function(e) {
+            e.preventDefault();
+            authenticate();
+        })
+  
     </script>
   </template>
 
@@ -271,17 +282,6 @@ var page=document.querySelector(`template[route='${hash}']`)||'404';"?>
 
     <script src="./static/js/functions.js"></script>
     <script src="./static/js/login.js"></script>
-    <script>
-        $('.admin-login-form').submit(function(e) {
-            e.preventDefault();
-            authenticate();
-        })
-        $('.staff-login-form').submit(function(e) {
-            e.preventDefault();
-            staffLogin();
-        })
-        
-        
-    </script>
+    
 </body>
 </html>

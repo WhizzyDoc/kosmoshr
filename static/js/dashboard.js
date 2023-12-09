@@ -1,9 +1,9 @@
 function getRecentLogs() {
-    let url = `${base_url}logs/get_logs/?per_page=10`;
+    let url = `${base_url}logs/get_logs/?api_token=${localStorage.api_key}&per_page=10`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-      //console.log(data);
+      console.log(data);
       $('.dash-task').empty()
       if(data['status'] == 'success') {
         if(data.data) {
