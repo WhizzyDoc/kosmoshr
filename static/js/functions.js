@@ -1,4 +1,5 @@
-const base_url = `https://kosmoshr.pythonanywhere.com/api/v1/`
+const base_image_url = `https://kosmoshr.pythonanywhere.com`;
+const base_url = `${base_image_url}/api/v1/`;
 
 $(document).ready(function() {
     
@@ -29,6 +30,9 @@ function getSite() {
         $('#comp-number').val(data.data.phone_number)
         $('#comp-emp').val(data.data.no_of_employees)
         $('#comp-about').val(data.data.about)
+        if(data.data.logo) {
+          $('.comp_image').attr('src', `${base_image_url}${data.data.logo}`)
+        }
         $('.alert-note').css('display', 'none')
       }
       else {

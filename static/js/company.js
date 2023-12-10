@@ -1,4 +1,12 @@
 getSite();
+function readFile() {
+    let reader = new FileReader();
+    let file = document.querySelector('#comp_image_in').files[0];
+    reader.onload = function(e) {
+        document.querySelector('.comp_image').src = e.target.result;
+    }
+    reader.readAsDataURL(file);
+}
 function saveCompanyInfo() {
     let url = `${base_url}site/create_site_info/`;
     let title = $('#comp-name').val()
@@ -7,6 +15,7 @@ function saveCompanyInfo() {
     let type = $('#comp-type').val()
     let phone = $('#comp-number').val()
     let numb = $('#comp-emp').val()
+    let image = $('.comp-im')[0].files[0]
     let about = $('#comp-about').val()
     if(title.trim() === '' || email.trim() === '' || type.trim() === '') {
         swal("OOps", "Name, Email or Type cannot be empty", "warning");
@@ -21,6 +30,9 @@ function saveCompanyInfo() {
     formData.append('type', type)
     formData.append('about', about)
     formData.append('no_of_employees', numb)
+    if(image) {
+        formData.append('image', image)
+    }
     $('.comp-btn').html('Saving Info...').attr('disabled', true)
     fetch(url, {
         method: 'POST',

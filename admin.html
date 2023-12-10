@@ -245,7 +245,14 @@ getSite();
             <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
           </div>
           <h2 class="w-bold-x w-center">Company Profile</h2>
-          <form class="row comp-form">
+          <form class="row comp-form" id="comp-form">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
+              <div class="company_image">
+                <img src="" class="comp_image" alt="" />
+                <label class="comp_image_in" for="comp_image_in"><i class="fa fa-camera"></i></label>
+                <input type="file" accept="image/*" id="comp_image_in" class="comp-im" onchange="readFile();" />
+              </div>
+            </div>
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
               <div class="form-group">
                 <label for="comp-name"><span class="w-text-red w-bold">*</span> Company Name:</label>
@@ -279,7 +286,7 @@ getSite();
               <textarea id="comp-about" class="form-control" rows="5"></textarea>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <button type="submit" class="btn btn-block comp-btn">Save Company Info</button>
+              <button type="submit" class="btn btn-block form-btn comp-btn">Save Company Info</button>
             </div>
           </form>
         </main>
@@ -287,7 +294,7 @@ getSite();
     <script>
       $('.comp-act').addClass('active');
       $('.org-act').addClass('active');
-      $('.comp-form').submit(function(e) {
+      $('#comp-form').submit(function(e) {
             e.preventDefault();
             saveCompanyInfo();
         })
@@ -433,9 +440,8 @@ getSite();
           <p class="w-text-gray">Get Insight into full list of employees registered with the company</p>
         </div>
 
-        <button class="add_emp_btn">Add Employee&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+        <button class="add_emp_btn add_btn">Add Employee&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
       </div>
-
       <!-- Tables -->
       <div class="table-responsive">
         <table class="emp-table table">
@@ -480,12 +486,160 @@ getSite();
           </tbody>
         </table>
       </div>
-      
     </main>
+
+    <div class="add_edit_emp_con side-con">
+      <div class="alert-note alert alert-danger">
+        <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
+      </div>
+      <div class="mb-2">
+        <button class="add_emp_btn emp_back_btn"><i class="fa fa-arrow-left"></i></button>
+        <h3>New Employee</h3>
+        <p class="w-text-gray">Set up new employee profiles.</p>
+      </div>
+
+      <form class="row comp-form" id="add-emp-form">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+          <div class="form-group">
+            <label for="emp-fname"><span class="w-text-red w-bold">*</span> First Name:</label>
+            <input type="text" class="form-control" id="emp-fname" required>
+          </div>
+          <div class="form-group">
+            <label for="emp-lname"><span class="w-text-red w-bold">*</span> Last Name:</label>
+            <input type="text" class="form-control" id="emp-lname" required>
+          </div>
+          <div class="form-group">
+            <label for="emp-email"><span class="w-text-red w-bold">*</span> Email:</label>
+            <input type="email" class="form-control" id="emp-email" required>
+          </div>
+          <div class="form-group">
+            <label for="emp-number">Phone Number:</label>
+            <input type="text" class="form-control" id="emp-number" placeholder="e.g 07011223344">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+          <div class="form-group">
+            <label for="emp-position"><span class="w-text-red w-bold">*</span> Select Position:</label>
+            <select class="form-control positions" id="emp-position">
+              <option selected>Select Position</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="emp-dept"><span class="w-text-red w-bold">*</span> Select Department:</label>
+            <select class="form-control depts" id="emp-dept">
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="emp-salary">Salary (in Naira):</label>
+            <input type="number" class="form-control" id="emp-salary" value="0" min="0">
+          </div>
+          <div class="form-group">
+            <label for="emp-appoint">Appointment Date:</label>
+            <input type="date" class="form-control" id="emp-appoint" required value="2024-01-01">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
+          <button type="submit" class="btn btn-block form-btn emp-add-btn">Add Employee</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="emp_det_con side-con">
+      <div class="alert-note alert alert-danger">
+        <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
+      </div>
+      <div class="mb-2">
+        <button class="add_emp_btn emp_back_btn2"><i class="fa fa-arrow-left"></i></button>
+        <h3>Employee Profile</h3>
+      </div>
+
+      <form class="row comp-form">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
+          <div class="company_image" style="margin-left: 20px;">
+            <img src="" class="emp_image" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+          <div class="form-group">
+            <label for="emp-fname2">First Name:</label>
+            <input type="text" class="form-control" id="emp-fname2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-lname2">Last Name:</label>
+            <input type="text" class="form-control" id="emp-lname2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-id2">Staff ID:</label>
+            <input type="text" class="form-control" id="emp-id2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-email2">Email:</label>
+            <input type="email" class="form-control" id="emp-email2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-number2">Phone Number:</label>
+            <input type="text" class="form-control" id="emp-number2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-position2">Position:</label>
+            <input type="text" class="form-control" id="emp-position2" readonly>
+          </div>
+          
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+          <div class="form-group">
+            <label for="emp-dept2">Department:</label>
+            <input type="text" class="form-control" id="emp-dept2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-address2">Address:</label>
+            <input type="text" class="form-control" id="emp-address2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-city2">City/State:</label>
+            <input type="text" class="form-control" id="emp-city2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-nation">Nationality:</label>
+            <input type="text" class="form-control" id="emp-nation" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-salary2">Salary (in Naira):</label>
+            <input type="number" class="form-control" id="emp-salary2" readonly>
+          </div>
+          <div class="form-group">
+            <label for="emp-appoint2">Appointment Date:</label>
+            <input type="date" class="form-control" id="emp-appoint2" readonly>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
+          <button class="btn btn-block form-btn" disabled>Edit Profile</button>
+        </div>
+      </form>
+    </div>
+
     <script src="./static/js/employees.js"></script>
     <script>
       $('.emp-act').addClass('active')
-      
+      $('#emp_search').on('input', function() {
+        getEmployees();
+      })
+      $('.add_btn').click(function() {
+        $('.add_edit_emp_con').addClass('active')
+        getDepartments();
+        getPositions();
+      });
+      $('.emp_back_btn').click(function() {
+        $('.add_edit_emp_con').removeClass('active')
+      });
+      $('.emp_back_btn2').click(function() {
+        $('.emp_det_con').removeClass('active')
+      });
+      $('#add-emp-form').submit(function(e) {
+            e.preventDefault();
+            addEmployee();
+        })
     </script>
   </template>
 
