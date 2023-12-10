@@ -69,7 +69,7 @@ body {
     margin-bottom: 40px;
   }
   .side-con {
-    position: absolute;
+    position: fixed;
     width: calc(100% - 250px);
     height: 100%;
     left: 110%;
