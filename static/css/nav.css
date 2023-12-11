@@ -8,7 +8,10 @@
 ::-webkit-scrollbar-track {background: #242526;}
 ::-webkit-scrollbar-thumb {background: #3A3B3C;}
 a {color: grey}
-
+body {
+    max-width:100%;
+    overflow-x: hidden;
+}
 .loader {
   width: 120px;
   height: 50px;
@@ -66,9 +69,10 @@ a {color: grey}
     margin-bottom: 40px;
   }
   .side-con {
-    position: absolute;
+    position: fixed;
     width: calc(100% - 250px);
     height: 100%;
+    overflow-y: auto;
     left: 110%;
     top: 0;
     z-index: 150;
