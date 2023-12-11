@@ -68,6 +68,9 @@ function authenticate() {
         //console.log(data);
         if(data['status'] == 'success') {
             localStorage.setItem('api_key', data.data.api_token)
+            if(data.data.image) {
+                localStorage.setItem('dp', data.data.image)
+            }
             localStorage.setItem('account', 'admin')
             localStorage.setItem('names', `${data.data.first_name} ${data.data.last_name}`);
             location.href = './admin.html'
@@ -85,16 +88,18 @@ function authenticate() {
 }
 
 function staffLogin() {
-    $('.login-btn').html('Authenticating...').attr('disabled', true)
-    let url = `${base_url}`
-    const formData = new FormData();
-    formData.append('username', $('#staff-username').val());
-    formData.append('password', $('#staff-password').val());
+    $('.staff-login-btn').html('Authenticating...').attr('disabled', true)
+    let url = `${base_url_2}login`
+    const formData = JSON.stringify({
+        user_id: $('#staff-username').val(),
+        password: $('#staff-password').val()
+    });
 
     fetch(url, {
         method:'POST',
         headers: {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: formData
     })
@@ -104,17 +109,22 @@ function staffLogin() {
         if(data['status'] == 'success') {
             localStorage.setItem('api_key', data.data.api_token)
             localStorage.setItem('account', 'staff')
+            if(data.data.image) {
+                localStorage.setItem('dp', data.data.image)
+            }
+            localStorage.setItem('position', data.data.position)
             localStorage.setItem('names', `${data.data.first_name} ${data.data.last_name}`);
-            location.href = './staff.html'
+            location.href = './employee.html'
+            //console.log(localStorage.dp + ':' + typeof(localStorage.dp))
         }
-        else if(data['status'] == 'error') {
-            $('#staff_err').html(`<i class="fa fa-warning"></i> ${data['message']}`)
+        else {
+            $('#staff_err').html(`<i class="fa fa-warning"></i> ${data['detail']}`)
         }
-        $('.login-btn').html('Log In').attr('disabled', false)
+        $('.staff-login-btn').html('Log In').attr('disabled', false)
     })
     .catch(err => {
         console.log(err);
-        $('.login-btn').html('Log In').attr('disabled', false);
+        $('.staff-login-btn').html('Log In').attr('disabled', false);
     })
 }
 
@@ -137,6 +147,7 @@ function admin_logout() {
             localStorage.removeItem('api_key')
             localStorage.removeItem('account')
             localStorage.removeItem('names');
+            localStorage.removeItem('dp');
             location.href = './index.html'
         }
         else if(data['status'] == 'error') {
@@ -149,4 +160,11 @@ function admin_logout() {
         swal('Error', "Error occured", "error")
     })
 }
-
+function staff_logout() {
+    localStorage.removeItem('api_key')
+    localStorage.removeItem('account')
+    localStorage.removeItem('names');
+    localStorage.removeItem('dp');
+    localStorage.removeItem('position')
+    location.href = './index.html';
+}

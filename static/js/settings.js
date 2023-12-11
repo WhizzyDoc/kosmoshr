@@ -83,5 +83,28 @@ prevBtnFourth.addEventListener("click", function(event){
 
 
 function getPlans() {
-    //
+    let url = `${base_url}site/get_plans/`;
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+      //console.log(data);
+      $('.positions').empty()
+      if(data['status'] == 'success') {
+        if(data.data) {
+            d = data.data
+            for(var i in d) {
+                var temp = `<option value="${d[i].id}">${d[i].title}</option>`;
+                $('.positions').append(temp)
+            }
+        }
+        else {
+            $('.positions').append(data.message)
+        }
+      }
+      else if(data['status'] == 'error') {
+        $('.positions').append(data.message)
+      }
+      $('.positions').prepend(`<option selected>Select Position</option>`)
+    })
+    .catch(err => {console.log(err)})
 }

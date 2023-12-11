@@ -5,173 +5,6 @@ window.Apex = {
     }
   };
   
-  var spark1 = {
-    chart: {
-      id: 'sparkline1',
-      type: 'line',
-      height: 140,
-      sparkline: {
-        enabled: true
-      },
-      group: 'sparklines'
-    },
-    series: [{
-      name: 'purple',
-      data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21]
-    }],
-    stroke: {
-      curve: 'smooth'
-    },
-    markers: {
-      size: 0
-    },
-    tooltip: {
-      fixed: {
-        enabled: true,
-        position: 'right'
-      },
-      x: {
-        show: false
-      }
-    },
-    title: {
-      text: 'Sales',
-      style: {
-        fontSize: '26px'
-      }
-    },
-    colors: ['#734CEA']
-  }
-  
-  var spark2 = {
-    chart: {
-      id: 'sparkline2',
-      type: 'line',
-      height: 140,
-      sparkline: {
-        enabled: true
-      },
-      group: 'sparklines'
-    },
-    series: [{
-      name: 'green',
-      data: [12, 14, 2, 47, 32, 44, 14, 55, 41, 69]
-    }],
-    stroke: {
-      curve: 'smooth'
-    },
-    markers: {
-      size: 0
-    },
-    tooltip: {
-      fixed: {
-        enabled: true,
-        position: 'right'
-      },
-      x: {
-        show: false
-      }
-    },
-    title: {
-      text: 'Production',
-      style: {
-        fontSize: '26px'
-      }
-    },
-    colors: ['#34bfa3']
-  }
-  
-  var spark3 = {
-    chart: {
-      id: 'sparkline3',
-      type: 'line',
-      height: 140,
-      sparkline: {
-        enabled: true
-      },
-      group: 'sparklines'
-    },
-    series: [{
-      name: 'red',
-      data: [47, 45, 74, 32, 56, 31, 44, 33, 45, 19]
-    }],
-    stroke: {
-      curve: 'smooth'
-    },
-    markers: {
-      size: 0
-    },
-    tooltip: {
-      fixed: {
-        enabled: true,
-        position: 'right'
-      },
-      x: {
-        show: false
-      }
-    },
-    colors: ['#f4516c'],
-    title: {
-      text: 'Expenditure',
-      style: {
-        fontSize: '26px'
-      }
-    },
-    xaxis: {
-      crosshairs: {
-        width: 1
-      },
-    }
-  }
-  
-  var spark4 = {
-    chart: {
-      id: 'sparkline4',
-      type: 'line',
-      height: 140,
-      sparkline: {
-        enabled: true
-      },
-      group: 'sparklines'
-    },
-    series: [{
-      name: 'teal',
-      data: [15, 75, 47, 65, 14, 32, 19, 54, 44, 61]
-    }],
-    stroke: {
-      curve: 'smooth'
-    },
-    markers: {
-      size: 0
-    },
-    tooltip: {
-      fixed: {
-        enabled: true,
-        position: 'right'
-      },
-      x: {
-        show: false
-      }
-    },
-    colors: ['#00c5dc'],
-    title: {
-      text: 'Revenue',
-      style: {
-        fontSize: '26px'
-      }
-    },
-    xaxis: {
-      crosshairs: {
-        width: 1
-      },
-    }
-  }
-  
-  new ApexCharts(document.querySelector("#spark1"), spark1).render();
-  new ApexCharts(document.querySelector("#spark2"), spark2).render();
-  new ApexCharts(document.querySelector("#spark3"), spark3).render();
-  new ApexCharts(document.querySelector("#spark4"), spark4).render();
-  
   var optionsBar = {
     chart: {
       type: 'bar',
@@ -189,13 +22,10 @@ window.Apex = {
         endingShape: 'rounded'
       }
     },
-    colors: ["#00C5A4", '#F3F2FC'],
+    colors: ["#00C5A4"],
     series: [{
-      name: "Upvote",
-      data: [20, 16, 24, 28, 26, 22, 15, 5, 14, 16, 22, 29],
-    }, {
-      name: "Downvote",
-      data: [20, 16, 24, 28, 26, 22, 15, 5, 14, 16, 22, 29],
+      name: "Perfomance",
+      data: [87, 89, 74, 93, 81, 100, 57, 0, 0, 0, 0, 0],
     }],
     labels: ["January", "February", "March", "April", "May", 
             "June", "July","August", "September", "October", 
@@ -244,11 +74,11 @@ window.Apex = {
       offsetY: -36
     },
     title: {
-      text: 'Monthly Company Ratings',
+      text: 'Monthly Employee Performance',
       align: 'left',
     },
     subtitle: {
-      text: 'Votes'
+      text: 'Percentage'
     },
     tooltip: {
       shared: true,
@@ -292,7 +122,7 @@ window.Apex = {
       show: false
     },
     title: {
-      text: 'Tasks Assigned',
+      text: 'Tasks Completed',
       align: 'left'
     }
   }
@@ -318,12 +148,12 @@ window.Apex = {
         }
       }
     },
-    colors: ['#775DD0', '#00C8E1', '#FFB900', '#E91E63'],
+    colors: ['#ff0000', '#ffa500', '#ffff00', '#00ff00', '#008000'],
     title: {
-      text: 'Company Budget'
+      text: 'Employee Ratings'
     },
-    series: [15, 40, 20, 25],
-    labels: ['Advertisement', 'Production', 'Salary', 'Reserve'],
+    series: [2, 8, 12, 36, 42],
+    labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
     legend: {
       show: true
     }
@@ -336,92 +166,7 @@ window.Apex = {
     // }, 1000)
   });
   
-  var optionsArea = {
-    chart: {
-      height: 421,
-      type: 'area',
-      background: '#fff',
-      stacked: true,
-      offsetY: 39,
-      zoom: {
-        enabled: false
-      }
-    },
-    plotOptions: {
-      line: {
-        dataLabels: {
-          enabled: false
-        }
-      }
-    },
-    stroke: {
-      curve: 'straight'
-    },
-    colors: ["#3F51B5", '#2196F3'],
-    series: [{
-        name: "Revenue",
-        data: [15, 26, 20, 33, 27, 43, 17, 26, 19]
-      },
-      {
-        name: "Expenditure",
-        data: [19, 21, 42, 19, 32, 25, 36, 29, 49]
-      }
-    ],
-    fill: {
-      type: 'gradient',
-      gradient: {
-        inverseColors: false,
-        shade: 'light',
-        type: "vertical",
-        opacityFrom: 0.9,
-        opacityTo: 0.6,
-        stops: [0, 100, 100, 100]
-      }
-    },
-    title: {
-      text: 'Profit Analysis',
-      align: 'left',
-      offsetY: -5,
-      offsetX: 20
-    },
-    subtitle: {
-      text: 'Monthly Statistics',
-      offsetY: 30,
-      offsetX: 20
-    },
-    markers: {
-      size: 0,
-      style: 'hollow',
-      strokeWidth: 8,
-      strokeColor: "#fff",
-      strokeOpacity: 0.25,
-    },
-    grid: {
-      show: false,
-      padding: {
-        left: 0,
-        right: 0
-      }
-    },
-    yaxis: {
-      show: false
-    },
-    labels: ['01/15/2002', '01/16/2002', '01/17/2002', '01/18/2002', '01/19/2002', '01/20/2002', '01/21/2002', '01/22/2002', '01/23/2002'],
-    xaxis: {
-      type: 'datetime',
-      tooltip: {
-        enabled: false
-      }
-    },
-    legend: {
-      offsetY: -50,
-      position: 'top',
-      horizontalAlign: 'right'
-    }
-  }
-  
-  var chartArea = new ApexCharts(document.querySelector('#area-adwords'), optionsArea);
-  chartArea.render();
+
   
   var optionsCircle4 = {
     chart: {

@@ -10,35 +10,19 @@
       <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&times;</a>
       <a href="#" class="dash-act"><i class="fa fa-th-large"></i> Dashboard</a>
       <a href="#profile"><i class="fa fa-user"></i> Profile</a>
-      <a href="#employees" class="emp-act"><i class="fa fa-users"></i> Employees</a>
-      <a class="accordion org-act"><i class="fa fa-building"></i> Organization</a>
-      <ul class="panel">
-        <li><a class="comp-act" href="#company_profile"><i class="fa fa-building"></i> Company Profile</a></li>
-        <li><a href="#budgets"><i class="fa fa-bar-chart"></i> Budgets</a></li>
-        <li><a href="#budgets"><i class="fa fa-money"></i> Revenue</a></li>
-        <li><a href="#departments"><i class="fa fa-bank"></i> Departments</a></li>
-        <li><a href="#positions"><i class="fa fa-graduation-cap"></i> Positions</a></li>
-        <li><a href="#events"><i class="fa fa-calendar"></i> Events</a></li>
-      </ul>
-      <a class="accordion"><i class="fa fa-male"></i> Manage Staff</a>
+      <a href="#colleagues" class="emp-act"><i class="fa fa-users"></i> Colleagues</a>
+      <a class="accordion"><i class="fa fa-calendar"></i> Schedule</a>
       <ul class="panel">
         <li><a href="#tasks"><i class="fa fa-list"></i> Tasks</a></li>
-        <li><a href="#queries"><i class="fa fa-pencil"></i> Queries</a></li>
-        <li><a href="#complaints"><i class="fa fa-file-o"></i> Complaints</a></li>
         <li><a href="#leave"><i class="fa fa-briefcase"></i> Leave</a></li>
         <li><a href="#reward"><i class="fa fa-trophy"></i> Ranking</a></li>
       </ul>
       <a class="accordion"><i class="fa fa-exchange"></i> Communication</a>
       <ul class="panel">
         <li><a href="#news"><i class="fa fa-newspaper-o"></i> News/Updates</a></li>
-        <li><a href="#logs"><i class="fa fa-pencil"></i> Logs/Activities</a></li>
-      </ul>
-      <a class="accordion set-act"><i class="fa fa-gear"></i> Settings</a>
-      <ul class="panel">
-        <li><a class="sub-act" href="#subscription"><i class="fa fa-dollar"></i> Subscription</a></li>
-        <li><a href="#settings"><i class="fa fa-gears"></i> General Settings</a></li>
-        <li><a href="#security"><i class="fa fa-lock"></i> Security Settings</a></li>
-        <li><a href="#staff_settings"><i class="fa fa-group"></i> Staff Settings</a></li>
+        <li><a href="#events"><i class="fa fa-calendar"></i> Events</a></li>
+        <li><a href="#queries"><i class="fa fa-pencil"></i> Queries</a></li>
+        <li><a href="#complaints"><i class="fa fa-file-o"></i> Complaints</a></li>
       </ul>
       <a href="#" class="w-text-red logout-btn"><i class="fa fa-power-off"></i> Logout</a>
     </div>
@@ -47,7 +31,7 @@
       
       $('.logout-btn').click(function(e) {
         e.preventDefault();
-        admin_logout();
+        staff_logout();
       })
       var acc = document.getElementsByClassName("accordion");
 var i;
@@ -62,8 +46,7 @@ for (i = 0; i < acc.length; i++) {
       panel.style.maxHeight = panel.scrollHeight + "px";
     } 
   });
-}
-getSite();  
+} 
     </script>
   </template>
 
@@ -84,7 +67,7 @@ getSite();
           <img src="./static/image/avatar.png" alt="" class="admin-img" />
           <div class="h5">
             <span class="w-bold-x"><?print: localStorage.names?></span><br>
-            <small class="w-bold">Admin</small>
+            <small class="w-bold"><?print: localStorage.position?></small>
           </div>
         </div>
         <div class="opennav" onclick="openNav()"><i class="fa fa-navicon"></i></div>
@@ -93,216 +76,7 @@ getSite();
     
   </template>
 
-  <!-- for subscription -->
-  <template id="subscription">
-    <?use-template: "sidenav"?>
-        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-        <main class="">
-          <?use-template: "header"?>
-          <div class="alert-note alert alert-danger">
-            <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
-          </div>
-          <h3>Subscription</h3>
-          <p class="w-text-gray">Choose a subscription plan that best suits your need.</p>
 
-          <div class="sub-container">
-            <div class="sub-progress-bar">
-
-              <div class="step">
-                <div class="bullet">
-                  <span></span>
-                </div>
-                <div class="check fa fa-check"></div>
-                <p><i class="fa fa-dollar"></i></p>
-              </div>
-
-              <div class="step">
-                <div class="bullet">
-                  <span></span>
-                </div>
-                <div class="check fa fa-check"></div>
-                <p><i class="fa fa-credit-card"></i></p>
-              </div>
-              <div class="step">
-                <div class="bullet">
-                  <span></span>
-                </div>
-                <div class="check fa fa-check"></div>
-                <p><i class="fa fa-file-o"></i></p>
-              </div>
-              <div class="step">
-                <div class="bullet">
-                  <span></span>
-                </div>
-                <div class="check fa fa-check"></div>
-                <p><i class="fa fa-thumbs-up"></i></p>
-              </div>
-            </div>
-            <div class="form-outer">
-              <div class="sub-step">
-
-                <div class="page slide-page">
-
-                  <div class="wrapper">
-                    <input type="radio" name="slider" checked id="home">
-                    <input type="radio" name="slider" id="blog">
-                    <input type="radio" name="slider" id="code">
-                    <input type="radio" name="slider" id="help">
-                    <div class="tabs">
-                      <label for="home" class="home">Free</label>
-                      <label for="blog" class="blog">Standard</label>
-                      <label for="code" class="code">Corporate</label>
-                      <label for="help" class="help">Business</label>
-                      <div class="slider"></div>
-                    </div>
-                    <section>
-
-                      <div class="content content-1">
-                        <h5 class="h6">Freemium plan for beginner's</h5>
-                        <h6 class="h6 w-bold-xx">Features</h6>
-                        <ul class="feat-list">
-                          <li><i class="fa fa-check w-text-green"></i> 5 Staff</li>
-                          <li><i class="fa fa-check w-text-green"></i> Task delegation to staff</li>
-                          <li><i class="fa fa-check w-text-green"></i> Basic End-of-Day Reports</li>
-                          <li><i class="fa fa-check w-text-green"></i> In-Depth Analytics and Insights</li>
-                          <li><i class="fa fa-check w-text-green"></i> Query Handling</li>
-                          <li><i class="fa fa-check w-text-green"></i> HR Staff Communication Tools</li>
-                          <li><i class="fa fa-check w-text-green"></i> Email Support</li>
-                        </ul>
-                        <div class="field">
-                          <button class="next">Activate</button>
-                        </div>
-                      </div>
-
-                      <div class="content content-2">
-                        <h5 class="h6">Standard plan for small and medium enterprise</h5>
-                        <h6 class="h6 w-bold-xx">Features</h6>
-                        <ul class="feat-list">
-                          <li><i class="fa fa-check w-text-green"></i> 50 Staff</li>
-                          <li><i class="fa fa-check w-text-green"></i> Task delegation to staff</li>
-                          <li><i class="fa fa-check w-text-green"></i> Basic End-of-Day Reports</li>
-                          <li><i class="fa fa-check w-text-green"></i> In-Depth Analytics and Insights</li>
-                          <li><i class="fa fa-check w-text-green"></i> Query Handling</li>
-                          <li><i class="fa fa-check w-text-green"></i> HR Staff Communication Tools</li>
-                          <li><i class="fa fa-check w-text-green"></i> Email Support</li>
-                        </ul>
-                        <div class="field">
-                          <button class="firstNext prev">Pay Monthly</button>
-                          <button class="firstNext2 next">Pay Yearly</button>
-                        </div>
-                      </div>
-
-                      <div class="content content-3">
-                        
-                      </div>
-
-                      <div class="content content-4">
-                        
-                      </div>
-
-                    </section>
-                  </div>
-                
-                </div>
-      
-                <div class="page">
-                  <div class="field btns">
-                    <button class="prev-1 prev">Previous</button>
-                    <button class="next-1 next">Next</button>
-                  </div>
-                </div>
-      
-                <div class="page">
-                  <div class="field btns">
-                    <button class="prev-2 prev">Previous</button>
-                    <button class="next-2 next">Next</button>
-                  </div>
-                </div>
-      
-                <div class="page">
-                  <div class="field btns">
-                    <button class="prev-3 prev">Previous</button>
-                    <button class="submit">Submit</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </main>
-        <script src="./static/js/settings.js"></script>
-    <script>
-      $('.sub-act').addClass('active');
-      $('.set-act').addClass('active');
-      getPlans();
-    </script>
-  </template>
-
-  <!-- for company profile -->
-  <template id="company_profile">
-    <?use-template: "sidenav"?>
-        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-        <main class="">
-          <?use-template: "header"?>
-          <div class="alert-note alert alert-danger">
-            <i class="fa fa-warning"></i> Click <a class="w-text-blue" href="#company_profile">here</a> to add company details.
-          </div>
-          <h2 class="w-bold-x w-center">Company Profile</h2>
-          <form class="row comp-form" id="comp-form">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <div class="company_image">
-                <img src="" class="comp_image" alt="" />
-                <label class="comp_image_in" for="comp_image_in"><i class="fa fa-camera"></i></label>
-                <input type="file" accept="image/*" id="comp_image_in" class="comp-im" onchange="readFile();" />
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
-              <div class="form-group">
-                <label for="comp-name"><span class="w-text-red w-bold">*</span> Company Name:</label>
-                <input type="text" class="form-control" id="comp-name" required>
-              </div>
-              <div class="form-group">
-                <label for="comp-email"><span class="w-text-red w-bold">*</span> Company Email:</label>
-                <input type="email" class="form-control" id="comp-email" required>
-              </div>
-              <div class="form-group">
-                <label for="comp-address">Company Address:</label>
-                <input type="text" class="form-control" id="comp-address">
-              </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
-              <div class="form-group">
-                <label for="comp-type"><span class="w-text-red w-bold">*</span> Company Type:</label>
-                <input type="text" class="form-control" id="comp-type" placeholder="e.g Banking, Technology, Advertisement, Health Services" required>
-              </div>
-              <div class="form-group">
-                <label for="comp-number">Company Number:</label>
-                <input type="text" class="form-control" id="comp-number" placeholder="e.g 07011223344">
-              </div>
-              <div class="form-group">
-                <label for="comp-emp">Number of Employees:</label>
-                <input type="number" class="form-control" id="comp-emp">
-              </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <label for="comp-about">About Your Company:</label>
-              <textarea id="comp-about" class="form-control" rows="5"></textarea>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-              <button type="submit" class="btn btn-block form-btn comp-btn">Save Company Info</button>
-            </div>
-          </form>
-        </main>
-        <script src="./static/js/company.js"></script>
-    <script>
-      $('.comp-act').addClass('active');
-      $('.org-act').addClass('active');
-      $('#comp-form').submit(function(e) {
-            e.preventDefault();
-            saveCompanyInfo();
-        })
-    </script>
-  </template>
   <!-- for large screen navigation -->
   <template id="dashboard">
     
@@ -337,77 +111,58 @@ getSite();
                 </div>
               </div>
 
-              <div class="row sparkboxes mt-4">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                  <div class="box box1">
-                    <div id="spark1"></div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                  <div class="box box2">
-                    <div id="spark2"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mt-4 mb-5">
-                <div class="w-margin-top col-12 col-sm-12 col-md-12 col-lg-12 xol-xl-6">
-                  <div class="box body-bg">
-                    <div
-                      id="area-adwords"
-                      style="background: #fff"
-                      class="shadow"
-                    ></div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-6">
-                  <div class="box shadow">
-                    <div id="radialBarBottom"></div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-12 col-xl-6">
-                  <div class="box shadow">
-                    <div id="radialBarBottom2"></div>
-                  </div>
-                </div>
-                
-              </div>
-
             </div>
           </div>
   
   
-          <div class="dash-menu row">
-            <a href="#employees" class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
-              <div class="h5 w-bold-x">Employees</div>
-              <h3><i class="fa fa-male w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x emp_no">0</span></h3>
-            </a>
-            <a href="#departments" class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
-              <div class="h5 w-bold-x">Departments</div>
-              <h3><i class="fa fa-bank w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x dept_no">0</span></h3>
-            </a>
-            <a href="#queries" class="dash-menu-con col-12 col-sm-5 col-md-5 col-lg-5 col-xl-3">
-              <div class="h5 w-bold-x">Pending Queries</div>
-              <h3><i class="fa fa-pencil w-text-blue"></i>&nbsp;&nbsp;&nbsp;<span class="w-bold-x query_no">0</span></h3>
-            </a>
-          </div>
-          <!-- Tables -->
+          <!-- Task Tables -->
           <div class="table-responsive">
             <table class="dash-table table">
               <thead style="background:#fff">
                 <tr>
-                  <th colspan="2" class="w-bold-x">Recent Activities</th>
-                  <th><u><a href="#logs">See All Activities</a></u></th>
+                  <th colspan="2" class="w-bold-x">Recent Tasks</th>
+                  <th colspan="2"><u><a href="#logs">See All Tasks</a></u></th>
                 </tr>
               </thead>
               <thead>
                 <tr>
-                  <th>Activity Log</th>
+                  <th>Task Title</th>
+                  <th>Deadline</th>
+                  <th>Completed</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="emp-dash-task">
+                <tr>
+                  <td colspan="4" class="w-center">
+                  <div class="loader">
+                      <div class="ball w-black"></div>
+                      <div class="ball w-black"></div>
+                      <div class="ball w-black"></div>
+                  </div>
+                  </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Notification Tables -->
+          <div class="table-responsive">
+            <table class="dash-table table">
+              <thead style="background:#fff">
+                <tr>
+                  <th colspan="2" class="w-bold-x">Recent News</th>
+                  <th><u><a href="#news">See All News</a></u></th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>News</th>
                   <th>Date</th>
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody class="dash-task">
+              <tbody class="emp-dash-note">
                 <tr>
                   <td colspan="3" class="w-center">
                   <div class="loader">
@@ -420,16 +175,47 @@ getSite();
               </tbody>
             </table>
           </div>
+
+          <!-- Queries Tables -->
+          <div class="table-responsive">
+            <table class="dash-table table">
+              <thead style="background:#fff">
+                <tr>
+                  <th colspan="2" class="w-bold-x">Pending Queries</th>
+                  <th><u><a href="#queries">See All Queries</a></u></th>
+                </tr>
+              </thead>
+              <thead>
+                <tr>
+                  <th>Query</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody class="emp-dash-query">
+                <tr>
+                  <td colspan="3" class="w-center">
+                  <div class="loader">
+                      <div class="ball w-black"></div>
+                      <div class="ball w-black"></div>
+                      <div class="ball w-black"></div>
+                  </div>
+                  </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
         </main>
         <script src="./static/js/dashboard.js"></script>
-        <script src="./static/js/chart.js"></script>
+        <script src="./static/js/emp_chart.js"></script>
         <script>
           $('.dash-act').addClass('active')
         </script>
   </template>
 
   <!-- Employees Page -->
-  <template id="employees">
+  <template id="colleagues">
     <?use-template: "sidenav"?>
     <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     <main class="">
@@ -439,11 +225,9 @@ getSite();
       </div>
       <div class="w-flex w-flex-wrap w-flex-between w-align-center">
         <div class="mb-2">
-          <h3>Employees</h3>
-          <p class="w-text-gray">Get Insight into full list of employees registered with the company</p>
+          <h3>Colleagues</h3>
+          <p class="w-text-gray">Get Insight into full list of colleagues registered with the company</p>
         </div>
-
-        <button class="add_emp_btn add_btn">Add Employee&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
       </div>
       <!-- Tables -->
       <div class="table-responsive">
@@ -681,14 +465,8 @@ getSite();
 <template route="/">
   <?use-template: "dashboard"?>
 </template>
-<template route="/company_profile">
-  <?use-template: "company_profile"?>
-</template>
-<template route="/subscription">
-  <?use-template: "subscription"?>
-</template>
-<template route="/employees">
-  <?use-template: "employees"?>
+<template route="/colleagues">
+  <?use-template: "colleagues"?>
 </template>
 
 <!-- Standard Meta -->

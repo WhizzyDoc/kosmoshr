@@ -5,13 +5,16 @@ function getDepartments() {
     .then(data => {
       //console.log(data);
       $('.depts').empty()
+      $('.dept-filter').empty()
       if(data['status'] == 'success') {
         if(data.data) {
             d = data.data
             for(var i in d) {
                 var temp = `<option value="${d[i].id}">${d[i].title}</option>`;
                 $('.depts').append(temp)
+                $('.dept-filter').append(temp)
             }
+            $('.dept-filter').prepend(`<option value="" selected>All Department</option>`)
         }
         else {
             $('.depts').append(data.message)
@@ -24,6 +27,7 @@ function getDepartments() {
     })
     .catch(err => {console.log(err)})
   }
+  getDepartments();
 
   function getPositions() {
     let url = `${base_url}positions/get_positions/?api_token=${localStorage.api_key}&per_page=1000`;
@@ -70,17 +74,55 @@ function getDepartments() {
 
 function getEmployees() {
     let page = $('#emp_page').val();
-    let per_page = 20
-    let search = $('#emp_search').val()
-
-    let url = `${base_url}employees/get_employees/?api_token=${localStorage.api_key}&page=${page}&per_page=${per_page}&search=${search}`;
+    let per_page = $('#emp_per_page').val();
+    if(per_page < 5) {
+        swal("Oops!", "List per page cannot be less than 5", "warning")
+        per_page = 5
+    }
+    let search = $('#emp_search').val();
+    let sort_by = $('.sort-filter').val();
+    let dept_id = ""
+    let dept = $('.dept-filter').val();
+    if(dept.trim() !== "") {
+        dept_id = `&department_id=${dept}`
+    }
+    let url = `${base_url}employees/get_employees/?api_token=${localStorage.api_key}&page=${page}&per_page=${per_page}&sort_by=${sort_by}&search=${search}${dept_id}`;
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
       //console.log(data);
       $('.emp-list').empty()
       if(data['status'] == 'success') {
+        let pages = data.total_pages
         $('.emp-no').html(data['total_items'])
+        $('.page_nos').empty();
+        for(var i=0; i<pages; i++) {
+            let classN = "";
+            if((i+1) == data.page_number) {
+                classN = "active"
+            }
+            if((i+1) > (data.page_number + 1) || (i+1) < (data.page_number - 1)) {
+                continue
+            }
+            var temp = `<a href="#" class="page_no ${classN}" data-id="${i+1}">${i+1}</a>`;
+            $('.page_nos').append(temp);
+        }
+        let current_p = $('.page_no.active').data('id')
+        //console.log(current_p + ":" + typeof(current_p))
+        if((current_p - 1) > 0) {
+            let prev = `<a href="#" class="page_no" data-id="${current_p - 1}"><i class="fa fa-angle-left"></i></a>`
+            $('.page_nos').prepend(prev);
+        }
+        if((current_p + 1) <= data.total_pages) {
+            let next = `<a href="#" class="page_no" data-id="${current_p + 1}"><i class="fa fa-angle-right"></i></a>`
+            $('.page_nos').append(next);
+        }
+        $('.page_no').click(function(e) {
+            e.preventDefault();
+            let page = $(this).data('id');
+            $('#emp_page').val(page);
+            getEmployees();
+        })
         if(data.data) {
             let e = data.data;
             for(var i in e) {

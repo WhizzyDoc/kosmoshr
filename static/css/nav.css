@@ -75,6 +75,8 @@ a {color: grey}
     padding: 20px;
     background: #fff;
     margin-bottom: 40px;
+    max-width: 100%;
+    overflow-x: hidden;
     transition: all .5s ease;
   }
   .side-con.active {
@@ -628,10 +630,13 @@ text-align: justify;
   .emp-table tr td:nth-child(4) {display:none}
   .emp-table tr th:nth-child(5) {display:none}
   .emp-table tr td:nth-child(5) {display:none}
+  .sort-filter {display:none;}
+  #emp_per_page {display:none;}
 }
 @media screen and (max-width:400px) {
   .emp-table tr th:nth-child(3) {display:none}
   .emp-table tr td:nth-child(3) {display:none}
+  .dept-filter {display:none;}
 }
 .emp-head {
   display: flex;
@@ -647,4 +652,27 @@ text-align: justify;
   font-size: 15px;
   border-radius: 10px;
   margin-right: 20px;
+}
+.page_nos {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page_no {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bolder;
+  border: 1px solid rgb(15, 56, 83);
+  color: rgb(15, 56, 83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.page_no:hover, .page_no.active {
+  background: rgb(15, 56, 83);
+  color: #fff;
 }
