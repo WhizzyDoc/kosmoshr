@@ -1,4 +1,3 @@
-// apexcharts
 window.Apex = {
     dataLabels: {
       enabled: false
@@ -86,8 +85,90 @@ window.Apex = {
     }
   
   }
-  var chartBar = new ApexCharts(document.querySelector('#bar'), optionsBar);
+  var chartBar = new ApexCharts(document.querySelector('#bar2'), optionsBar);
   chartBar.render();
+
+  var optionsWeekBar = {
+    chart: {
+      type: 'bar',
+      height: 250,
+      width: '100%',
+      stacked: true,
+      foreColor: '#999',
+    },
+    plotOptions: {
+      bar: {
+        dataLabels: {
+          enabled: false
+        },
+        columnWidth: '75%',
+        endingShape: 'rounded'
+      }
+    },
+    colors: ["#00C5A4"],
+    series: [{
+      name: "Work Hours",
+      data: [7, 7, 8, 7, 6],
+    }],
+    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    xaxis: {
+      axisBorder: {
+        show: true
+      },
+      axisTicks: {
+        show: false
+      },
+      crosshairs: {
+        show: false
+      },
+      labels: {
+        show: false,
+        style: {
+          fontSize: '12px'
+        }
+      },
+    },
+    grid: {
+      xaxis: {
+        lines: {
+          show: false
+        },
+      },
+      yaxis: {
+        lines: {
+          show: false
+        },
+      }
+    },
+    yaxis: {
+      axisBorder: {
+        show: false
+      },
+      labels: {
+        show: true
+      },
+    },
+    legend: {
+      floating: true,
+      position: 'top',
+      horizontalAlign: 'right',
+      offsetY: -36
+    },
+    title: {
+      text: 'Weekly Attendance',
+      align: 'left',
+    },
+    subtitle: {
+      text: 'Work Hours'
+    },
+    tooltip: {
+      shared: true,
+      intersect: false
+    }
+  
+  }
+  var weekChartBar = new ApexCharts(document.querySelector('#bar5'), optionsWeekBar);
+  weekChartBar.render();
   
   var optionsCircle1 = {
     chart: {
@@ -125,12 +206,13 @@ window.Apex = {
       align: 'left'
     }
   }
-  var chartCircle1 = new ApexCharts(document.querySelector('#radialBar1'), optionsCircle1);
+  var chartCircle1 = new ApexCharts(document.querySelector('#radialBar12'), optionsCircle1);
   chartCircle1.render();
+  
   
   function getRandom() {
     return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-  } 
+  }
   var optionsDonutTop = {
     chart: {
       height: 265,
@@ -158,11 +240,11 @@ window.Apex = {
       show: true
     }
   }
-  var chartDonut2 = new ApexCharts(document.querySelector('#donutTop'), optionsDonutTop);
+  var chartDonut2 = new ApexCharts(document.querySelector('#donutTop2'), optionsDonutTop);
   chartDonut2.render().then(function () {
-     window.setInterval(function () {
+    window.setInterval(function () {
        chartDonut2.updateSeries([getRandom(), getRandom(), getRandom(), getRandom(), getRandom()])
-     }, 1000)
+     }, 5000)
   });
   
 
@@ -233,9 +315,6 @@ window.Apex = {
   var chartCircle5 = new ApexCharts(document.querySelector('#radialBarBottom2'), optionsCircle4);
   chartCircle5.render();
   
-  
-  
-  
   // a small hack to extend height in website sample dashboard
   chart.render().then(function () {
     var ifr = document.querySelector("#dash-wrapper");
@@ -243,4 +322,3 @@ window.Apex = {
       ifr.style.height = ifr.contentDocument.body.scrollHeight + 20 +'px';
     }
   });
-  

@@ -1,4 +1,5 @@
 const base_image_url = `https://kosmoshr.pythonanywhere.com`;
+//const base_image_url = `http://127.0.0.1:8000`;
 const base_url = `${base_image_url}/api/v1/`;
 const base_url_2 = `${base_image_url}/api/v2/`;
 

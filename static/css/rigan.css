@@ -1102,6 +1102,9 @@ input[type=checkbox].w-check:disabled+.w-validate, input[type=radio].w-radio:dis
 .w-flex-around {
     justify-content:space-around;
 }
+.w-flex-center {
+    justify-content:center;
+}
 .w-flex-start {
     justify-content:flex-start;
 }
@@ -1111,6 +1114,8 @@ input[type=checkbox].w-check:disabled+.w-validate, input[type=radio].w-radio:dis
 .w-flex-between {
     justify-content:space-between;
 }
+.w-align-start {align-items:flex-start;}
+.w-align-end {align-items:flex-end;}
 .w-align-center {align-items:center;}
 
 

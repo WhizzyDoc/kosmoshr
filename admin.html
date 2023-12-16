@@ -452,7 +452,7 @@ getSite();
             <tr>
               <th colspan="6">
                 <form class="w-flex w-flex-between w-align-center">
-                  <input type="number" class="form-control" id="emp_per_page" value="10" min="10" placeholder="List per page" style="max-width: 80px" />
+                  <input type="number" class="form-control" id="emp_per_page" value="10" min="5" placeholder="List per page" style="max-width: 80px" />
                 <div class="input-group" style="margin:0">
                   <input type="text" class="form-control" placeholder="Search Employee" id="emp_search" value="" />
                   <div class="input-group-append">
@@ -535,14 +535,12 @@ getSite();
         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
           <div class="form-group">
             <label for="emp-position"><span class="w-text-red w-bold">*</span> Select Position:</label>
-            <select class="form-control positions" id="emp-position">
-              <option selected>Select Position</option>
+            <select class="form-control positions" style="height:50px;padding:10px !important;" id="emp-position">
             </select>
           </div>
           <div class="form-group">
             <label for="emp-dept"><span class="w-text-red w-bold">*</span> Select Department:</label>
-            <select class="form-control depts" id="emp-dept">
-              
+            <select class="form-control depts" style="height:50px;padding:10px !important;" id="emp-dept">
             </select>
           </div>
           <div class="form-group">
@@ -569,20 +567,24 @@ getSite();
         <h3>Employee Profile</h3>
       </div>
 
-      <form class="row comp-form">
+      <form class="row comp-form" id="edit-emp-form">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
           <div class="company_image" style="margin-left: 20px;">
             <img src="" class="emp_image" alt="" />
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 w-padding">
           <div class="form-group">
             <label for="emp-fname2">First Name:</label>
-            <input type="text" class="form-control" id="emp-fname2" readonly>
+            <input type="text" class="form-control" id="emp-fname2">
+          </div>
+          <div class="form-group">
+            <label for="emp-mname2">Middle Name:</label>
+            <input type="text" class="form-control" id="emp-mname2">
           </div>
           <div class="form-group">
             <label for="emp-lname2">Last Name:</label>
-            <input type="text" class="form-control" id="emp-lname2" readonly>
+            <input type="text" class="form-control" id="emp-lname2">
           </div>
           <div class="form-group">
             <label for="emp-id2">Staff ID:</label>
@@ -590,51 +592,121 @@ getSite();
           </div>
           <div class="form-group">
             <label for="emp-email2">Email:</label>
-            <input type="email" class="form-control" id="emp-email2" readonly>
+            <input type="email" class="form-control" id="emp-email2">
           </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 w-padding">
           <div class="form-group">
             <label for="emp-number2">Phone Number:</label>
-            <input type="text" class="form-control" id="emp-number2" readonly>
+            <input type="text" class="form-control" id="emp-number2">
+          </div>
+          <div class="form-group">
+            <label for="emp-dob2">Date of Birth:</label>
+            <input type="date" class="form-control" id="emp-dob2">
           </div>
           <div class="form-group">
             <label for="emp-position2">Position:</label>
-            <input type="text" class="form-control" id="emp-position2" readonly>
+            <select class="form-control positions2" style="height:50px;padding:10px !important;" id="emp-position2">
+            </select>
           </div>
-          
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 w-padding">
           <div class="form-group">
             <label for="emp-dept2">Department:</label>
-            <input type="text" class="form-control" id="emp-dept2" readonly>
-          </div>
-          <div class="form-group">
-            <label for="emp-address2">Address:</label>
-            <input type="text" class="form-control" id="emp-address2" readonly>
-          </div>
-          <div class="form-group">
-            <label for="emp-city2">City/State:</label>
-            <input type="text" class="form-control" id="emp-city2" readonly>
-          </div>
-          <div class="form-group">
-            <label for="emp-nation">Nationality:</label>
-            <input type="text" class="form-control" id="emp-nation" readonly>
+            <select class="form-control depts2" style="height:50px;padding:10px !important;" id="emp-dept2">
+            </select>
           </div>
           <div class="form-group">
             <label for="emp-salary2">Salary (in Naira):</label>
-            <input type="number" class="form-control" id="emp-salary2" readonly>
+            <input type="number" class="form-control" id="emp-salary2">
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 w-padding">
+          
+          <div class="form-group">
+            <label for="emp-address2">Address:</label>
+            <input type="text" class="form-control" id="emp-address2">
+          </div>
+          <div class="form-group">
+            <label for="emp-city2">City:</label>
+            <input type="text" class="form-control" id="emp-city2">
+          </div>
+          <div class="form-group">
+            <label for="emp-state2">State:</label>
+            <input type="text" class="form-control" id="emp-state2">
+          </div>
+          <div class="form-group">
+            <label for="emp-nation">Nationality:</label>
+            <input type="text" class="form-control" id="emp-nation">
           </div>
           <div class="form-group">
             <label for="emp-appoint2">Appointment Date:</label>
-            <input type="date" class="form-control" id="emp-appoint2" readonly>
+            <input type="date" class="form-control" id="emp-appoint2">
           </div>
         </div>
+
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w-padding">
-          <button class="btn btn-block form-btn" disabled>Edit Profile</button>
+          <button class="btn btn-block form-btn emp-edit-btn"><i class="fa fa-check-circle"></i> Save Profile</button>
         </div>
       </form>
     </div>
 
+    <div class="emp_rep_con side-con">
+      <div class="mb-2">
+        <button class="add_emp_btn emp_back_btn3"><i class="fa fa-arrow-left"></i></button>
+        <h3>Employee Report Analytics</h3>
+      </div>
+      <div class="w-flex w-flex-wrap w-flex-center w-align-center">
+        <img src="" class="emp_rep_dp w-margin" alt="" />
+        <div>
+          <div class="h4 w-bold-xx emp_names"></div>
+          <div class="h5 w-bold emp_pos"></div>
+          <div class="h6 w-bold emp_dep"></div>
+          <div class="h5 emp_stars">
+            <span class="fa fa-star w-text-yellow"></span>
+            <span class="fa fa-star w-text-yellow"></span>
+            <span class="fa fa-star w-text-yellow"></span>
+            <span class="fa fa-star-half w-text-yellow"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="dash-wrapper">
+        <div class="content-area">
+
+          <div class="row mt-4">
+            <div class="w-margin-bottom col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
+              <div class="box shadow">
+                <div id="bar2"></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-4">
+              <div class="box shadow">
+                <div id="donutTop2"></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+              <div class="box shadow">
+                <div id="radialBar12"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="w-margin-bottom col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5">
+              <div class="box shadow">
+                <div id="bar5"></div>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <script src="./static/js/employees.js"></script>
+    <script src="./static/js/employee_report.js"></script>
     <script>
       $('.emp-act').addClass('active')
       $('#emp_search').on('input', function() {
@@ -664,9 +736,16 @@ getSite();
       $('.emp_back_btn2').click(function() {
         $('.emp_det_con').removeClass('active')
       });
+      $('.emp_back_btn3').click(function() {
+        $('.emp_rep_con').removeClass('active')
+      });
       $('#add-emp-form').submit(function(e) {
             e.preventDefault();
             addEmployee();
+        })
+        $('#edit-emp-form').submit(function(e) {
+            e.preventDefault();
+            editEmployee();
         })
     </script>
   </template>

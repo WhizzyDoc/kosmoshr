@@ -13,6 +13,7 @@ function getDepartments() {
                 var temp = `<option value="${d[i].id}">${d[i].title}</option>`;
                 $('.depts').append(temp)
                 $('.dept-filter').append(temp)
+                $('.depts2').append(temp)
             }
             $('.dept-filter').prepend(`<option value="" selected>All Department</option>`)
         }
@@ -42,6 +43,7 @@ function getDepartments() {
             for(var i in d) {
                 var temp = `<option value="${d[i].id}">${d[i].title}</option>`;
                 $('.positions').append(temp)
+                $('.positions2').append(temp)
             }
         }
         else {
@@ -135,7 +137,10 @@ function getEmployees() {
                 <td>${e[i].department.title}</td>
                 <td>${e[i].position.title}</td>
                 <td>${e[i].phone_number}</td>
-                <td><a href="#" class="emp-det-link" data-id="${e[i].id_no}">Details</a></td>
+                <td>
+                <a href="#" class="emp-det-link" data-id="${e[i].id_no}"><i class="fa fa-edit"></i> Profile</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#" class="emp-rep-link" data-id="${e[i].id_no}"><i class="fa fa-file-o"></i> Report</a>
+                </td>
               </tr>`;
               $('.emp-list').append(temp)
             }
@@ -143,7 +148,15 @@ function getEmployees() {
                 e.preventDefault();
                 let id_no = $(this).data('id');
                 $('.emp_det_con').addClass('active')
+                getPositions();
+                getDepartments();
                 getEmployeeDetails(id_no);
+            })
+            $('.emp-rep-link').click(function(e) {
+                e.preventDefault();
+                let id_no = $(this).data('id');
+                $('.emp_rep_con').addClass('active')
+                getEmployeeReport(id_no);
             })
         }
         else {
@@ -223,30 +236,129 @@ function getEmployeeDetails(id) {
     fetch(url)
     .then(res => {return res.json()})
     .then(data => {
-        console.log(data)
+        //console.log(data)
         if(data['status'] == 'success') {
             e = data.data;
             $('#emp-fname2').val(e.first_name)
             $('#emp-lname2').val(e.last_name)
+            $('#emp-mname2').val(e.middle_name)
             $('#emp-id2').val(e.id_no)
             $('#emp-email2').val(e.email)
             $('#emp-number2').val(e.phone_number)
-            $('#emp-position2').val(e.position.title)
-            $('#emp-dept2').val(e.department.title)
             $('#emp-salary2').val(e.salary)
             $('#emp-address2').val(e.address)
-            $('#emp-city2').val(`${e.city}, ${e.state}`)
+            $('#emp-city2').val(e.city)
+            $('#emp-state2').val(e.state)
             $('#emp-nation').val(e.nationality)
             $('#emp-appoint2').val((e.appointment_date))
+            $('#emp-dob2').val((e.date_of_birth))
             if(e.image) {
                 $('.emp_image').attr('src', `${base_image_url}${e.image}`)
             }
             else {
                 $('.emp_image').attr('src', `./static/image/avatar.png`)
             }
+            $('#emp-position2').val(e.position.id)
+            $('#emp-dept2').val(e.department.id)
         }
     })
     .catch(err => {
         console.log(err)
+    })
+}
+
+function getEmployeeReport(id) {
+    let url = `${base_url}employees/get_employee_report/?employee_id=${id}`
+    fetch(url)
+    .then(res => {return res.json()})
+    .then(data => {
+        console.log(data)
+        if(data['status'] == 'success') {
+            p = data.profile,
+            t = data.data,
+            $('.emp_names').html(`${p.first_name} ${p.last_name}`)
+            $('.emp_pos').html(`${p.position.title}`)
+            $('.emp_dep').html(`${p.department.title}`)
+            let dp = `./static/image/avatar.png`
+            if(p.image) {
+                dp = `${base_image_url}${p.image}`;
+            }
+            $('.emp_rep_dp').attr('src', dp)
+        }
+        else if(data['status'] == 'error') {
+            swal('Error', data['message'], 'error')
+        }
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+function editEmployee() {
+    let url = `${base_url}employees/edit_employee/`;
+    let staff_id = $('#emp-id2').val()
+    //console.log(staff_id)
+    let fname = $('#emp-fname2').val()
+    let lname = $('#emp-lname2').val()
+    let mname = $('#emp-mname2').val()
+    let email = $('#emp-email2').val()
+    let phone = $('#emp-number2').val()
+    let position = $('#emp-position2').val()
+    let dept = $('#emp-dept2').val()
+    let address = $('#emp-address2').val()
+    let city = $('#emp-city2').val()
+    let state = $('#emp-state2').val()
+    let nation = $('#emp-nation').val()
+    let salary = $('#emp-salary2').val()
+    let appoint = $('#emp-appoint2').val()
+    let dob = $('#emp-dob2').val()
+
+
+    if(fname.trim() === '' || email.trim() === '' || lname.trim() === '') {
+        swal("OOps", "First Name, Last Name or Email cannot be empty", "warning");
+        return;
+    }
+    const formData = new FormData();
+    formData.append('api_token', localStorage.api_key);
+    formData.append('employee_id', staff_id)
+    formData.append('first_name', fname)
+    formData.append('last_name', lname)
+    formData.append('middle_name', mname)
+    formData.append('phone_number',phone)
+    formData.append('email', email)
+    formData.append('salary', salary)
+    formData.append('position', position)
+    formData.append('department', dept)
+    formData.append('address', address)
+    formData.append('city', city)
+    formData.append('state', state)
+    formData.append('nation', nation)
+    formData.append('appointment_date', appoint)
+    formData.append('date_of_birth', dob)
+
+    $('.emp-edit-btn').html('Saving...').attr('disabled', true)
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: formData
+    })
+    .then(res => {return res.json()})
+    .then(data => {
+        //console.log(data);
+        if(data['status'] == 'success') {
+            swal("Success", data.message, 'success')
+            getEmployeeDetails(staff_id)
+            getEmployees();
+        }
+        else if(data['status'] == 'error') {
+            swal("Error", data.message, 'error')
+        }
+        $('.emp-edit-btn').html(`<i class="fa fa-check-circle"></i> Save Profile`).attr('disabled', false)
+    })
+    .catch(err => {
+        console.log(err);
+        $('.emp-add-btn').html(`<i class="fa fa-check-circle"></i> Save Profile`).attr('disabled', false)
     })
 }

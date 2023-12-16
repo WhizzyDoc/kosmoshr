@@ -680,3 +680,10 @@ text-align: justify;
   background: rgb(15, 56, 83);
   color: #fff;
 }
+.emp_rep_dp {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding: 3px;
+  border: 1px solid lightblue;
+}
